@@ -290,6 +290,16 @@ FakesAssemblies/
 # Node.js Tools for Visual Studio
 .ntvs_analysis.dat
 node_modules/
+dist/
+build/
+
+# Angular
+AngularApp/.angular/
+AngularApp/dist/
+
+# React
+react-app/build/
+react-app/node_modules/
 
 # Visual Studio 6 build log
 *.plg
