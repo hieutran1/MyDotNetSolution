@@ -16,18 +16,32 @@ builder.Services.AddScoped(typeof(IRepository<>), typeof(CachedRepository<>));
 builder.Services.AddScoped<IRepository<Order>, OrderRepository>();
 builder.Services.AddScoped<ICacheService, CacheService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+// Register the messaging service
+builder.Services.AddSingleton<IMessagingService, InMemoryMessagingService>();
 
 // For Kafka
-builder.Services.AddSingleton<IMessagingService>(sp =>
-    new KafkaMessagingService("localhost:9092", "my-group-id"));
+// builder.Services.AddSingleton<IMessagingService>(sp =>
+//     new KafkaMessagingService("localhost:9092", "my-group-id"));
 
 // For Azure Service Bus
-builder.Services.AddSingleton<IMessagingService>(sp =>
-    new AzureServiceBusMessagingService("YourAzureServiceBusConnectionString"));
+// builder.Services.AddSingleton<IMessagingService>(sp =>
+//     new AzureServiceBusMessagingService("YourAzureServiceBusConnectionString"));
 
 builder.Services.AddScoped<OrderService>();
 
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
 var app = builder.Build();
+
+// Configure the HTTP request pipeline.
+app.UseSwagger();
+app.UseSwaggerUI();
+
+app.UseHttpsRedirection();
+app.UseAuthorization();
+app.MapControllers();
 
 // Subscribe to the "OrderQueue"
 var orderService = app.Services.GetRequiredService<OrderService>();
