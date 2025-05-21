@@ -8,7 +8,7 @@ namespace Infrastructure.Repositories
 {
     public class OrderRepository : IRepository<Order>
     {
-        private readonly List<Order> _orders = new();
+        private static readonly List<Order> _orders = new();
 
         public Task AddAsync(Order entity)
         {

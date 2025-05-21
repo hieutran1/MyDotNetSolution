@@ -40,7 +40,7 @@ namespace Application.Services
             await _unitOfWork.BeginTransactionAsync();
             try
             {
-                var order = new Core.Models.Order { Id = dto.Id, CustomerName = dto.CustomerName, TotalAmount = dto.TotalAmount };
+                var order = new Order { Id = dto.Id, CustomerName = dto.CustomerName, TotalAmount = dto.TotalAmount };
                 await _unitOfWork.Orders.AddAsync(order);
 
                 // Invalidate cache
