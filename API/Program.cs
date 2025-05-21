@@ -1,13 +1,18 @@
+using System;
+using System.Threading.Tasks;
 using Application.Services;
 using Core.Entities;
 using Core.Interfaces;
 using Core.Models;
 using Infrastructure.Caching;
+using Infrastructure.Data;
 using Infrastructure.Messaging;
 using Infrastructure.Repositories;
 using Infrastructure.Services;
 using Infrastructure.UnitOfWork;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -36,6 +41,11 @@ builder.Services.AddSingleton<IRepository<Customer>>(sp =>
 
 builder.Services.AddSingleton<ICustomerService, InMemoryCustomerService>();
 
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<ICustomerService, EfCustomerRepository>();
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -50,8 +60,13 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 app.MapControllers();
 
-// Subscribe to the "OrderQueue"
-var orderService = app.Services.GetRequiredService<OrderService>();
+// Subscribe to the "OrderQueue" after building the app
 var messagingService = app.Services.GetRequiredService<IMessagingService>();
+await messagingService.SubscribeAsync<Order>("OrderQueue", async order =>
+{
+    Console.WriteLine($"Received order: {order.Id} for {order.CustomerName}");
+    // You can add additional logic here, e.g., update status, notify, etc.
+    await Task.CompletedTask;
+});
 
 app.Run();
