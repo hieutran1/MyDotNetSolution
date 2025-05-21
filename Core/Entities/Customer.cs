@@ -1,8 +1,9 @@
 using System;
+using MyDotNetSolution.Core;
 
 namespace Core.Entities;
 
-public class Customer
+public class Customer : IEntity
 {
     public Guid Id { get; set; }
     public string Name { get; set; } = default!;

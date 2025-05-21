@@ -1,5 +1,6 @@
 using Confluent.Kafka;
 using Core.Interfaces;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Text.Json;
@@ -10,11 +11,13 @@ namespace Infrastructure.Messaging
 {
     public class KafkaMessagingService : IMessagingService
     {
+        private readonly ILogger<KafkaMessagingService> _logger;
         private readonly ProducerConfig _producerConfig;
         private readonly ConsumerConfig _consumerConfig;
 
-        public KafkaMessagingService(string bootstrapServers, string groupId)
+        public KafkaMessagingService(ILogger<KafkaMessagingService> logger, string bootstrapServers, string groupId)
         {
+            _logger = logger;
             _producerConfig = new ProducerConfig { BootstrapServers = bootstrapServers };
             _consumerConfig = new ConsumerConfig
             {
@@ -46,11 +49,11 @@ namespace Infrastructure.Messaging
             try
             {
                 var result = await producer.ProduceAsync(topic, kafkaMessage);
-                Console.WriteLine($"Kafka: Published to '{topic}' (Partition: {result.Partition}, Offset: {result.Offset}): {serializedMessage}");
+                _logger.LogInformation($"Kafka: Published to '{topic}' (Partition: {result.Partition}, Offset: {result.Offset}): {serializedMessage}");
             }
             catch (ProduceException<Null, string> ex)
             {
-                Console.WriteLine($"Kafka: Error publishing to '{topic}': {ex.Error.Reason}");
+                _logger.LogError(ex, $"Kafka: Error publishing to '{topic}': {ex.Error.Reason}");
                 throw;
             }
         }
@@ -61,7 +64,7 @@ namespace Infrastructure.Messaging
             consumer.Subscribe(topic);
 
             var cts = new CancellationTokenSource();
-            Console.WriteLine($"Kafka: Subscribed to '{topic}'");
+            _logger.LogInformation($"Kafka: Subscribed to '{topic}'");
 
             try
             {

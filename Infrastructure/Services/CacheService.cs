@@ -14,7 +14,7 @@ namespace Infrastructure.Services
 
         public T? Get<T>(string key)
         {
-            return _cache.TryGetValue(key, out T value) ? value : default;
+            return _cache.TryGetValue(key, out T? value) ? value : default;
         }
 
         public void Set<T>(string key, T value, TimeSpan? absoluteExpirationRelativeToNow = null)

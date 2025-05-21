@@ -1,5 +1,6 @@
 using Core.Interfaces;
 using Microsoft.Extensions.Caching.Memory;
+using MyDotNetSolution.Core;
 using System;
 using System.Collections.Generic;
 using System.Reflection;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {
-    public class CachedRepository<T> : IRepository<T> where T : class
+    public class CachedRepository<T> : IRepository<T> where T : IEntity
     {
         private readonly IRepository<T> _innerRepository;
         private readonly IMemoryCache _cache;

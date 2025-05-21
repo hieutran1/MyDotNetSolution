@@ -1,10 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using MyDotNetSolution.Core;
 
 namespace Core.Interfaces
 {
-    public interface IRepository<T>
+    public interface IRepository<T> where T : IEntity
     {
         Task<T?> GetByIdAsync(Guid id);
         Task<IEnumerable<T>> GetAllAsync();

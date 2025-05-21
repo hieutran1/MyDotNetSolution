@@ -1,4 +1,5 @@
 using Core.Interfaces;
+using MyDotNetSolution.Core;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -8,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {
-    public class Repository<T> : IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : IEntity
     {
         private readonly ConcurrentDictionary<Guid, T> _store = new ConcurrentDictionary<Guid, T>();
         private readonly PropertyInfo? _idProperty;

@@ -1,5 +1,6 @@
 using Azure.Messaging.ServiceBus;
 using Core.Interfaces;
+using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Text.Json;
@@ -9,10 +10,12 @@ namespace Infrastructure.Messaging
 {
     public class AzureServiceBusMessagingService : IMessagingService
     {
+        private readonly ILogger<AzureServiceBusMessagingService> _logger;
         private readonly string _connectionString;
 
-        public AzureServiceBusMessagingService(string connectionString)
+        public AzureServiceBusMessagingService(ILogger<AzureServiceBusMessagingService> logger, string connectionString)
         {
+            _logger = logger;
             _connectionString = connectionString;
         }
 
@@ -40,11 +43,11 @@ namespace Infrastructure.Messaging
             try
             {
                 await sender.SendMessageAsync(serviceBusMessage);
-                Console.WriteLine($"Azure Service Bus: Published to '{queueOrTopic}': {serializedMessage}");
+                _logger.LogInformation($"Azure Service Bus: Published to '{queueOrTopic}': {serializedMessage}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"Azure Service Bus: Error publishing to '{queueOrTopic}': {ex.Message}");
+                _logger.LogError(ex, $"Azure Service Bus: Error publishing to '{queueOrTopic}': {ex.Message}");
                 throw;
             }
         }
@@ -66,12 +69,12 @@ namespace Infrastructure.Messaging
 
             processor.ProcessErrorAsync += args =>
             {
-                Console.WriteLine($"Azure Service Bus: Error: {args.Exception.Message}");
+                _logger.LogInformation($"Azure Service Bus: Error: {args.Exception.Message}");
                 return Task.CompletedTask;
             };
 
             await processor.StartProcessingAsync();
-            Console.WriteLine($"Azure Service Bus: Subscribed to '{queueOrTopic}'");
+            _logger.LogInformation($"Azure Service Bus: Subscribed to '{queueOrTopic}'");
         }
     }
 }
