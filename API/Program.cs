@@ -1,9 +1,11 @@
 using Application.Services;
+using Core.Entities;
 using Core.Interfaces;
 using Core.Models;
 using Infrastructure.Caching;
 using Infrastructure.Messaging;
 using Infrastructure.Repositories;
+using Infrastructure.Services;
 using Infrastructure.UnitOfWork;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
@@ -14,7 +16,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddMemoryCache();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(CachedRepository<>));
 builder.Services.AddScoped<IRepository<Order>, OrderRepository>();
-builder.Services.AddScoped<ICacheService, CacheService>();
+builder.Services.AddSingleton<ICacheService, InMemoryCacheService>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 // Register the messaging service
 builder.Services.AddSingleton<IMessagingService, InMemoryMessagingService>();
@@ -28,6 +30,11 @@ builder.Services.AddSingleton<IMessagingService, InMemoryMessagingService>();
 //     new AzureServiceBusMessagingService("YourAzureServiceBusConnectionString"));
 
 builder.Services.AddScoped<OrderService>();
+
+builder.Services.AddSingleton<IRepository<Customer>>(sp =>
+    new InMemoryRepository<Customer>(c => c.Id));
+
+builder.Services.AddSingleton<ICustomerService, InMemoryCustomerService>();
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();

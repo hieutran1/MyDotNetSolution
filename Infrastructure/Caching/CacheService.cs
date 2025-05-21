@@ -17,9 +17,16 @@ namespace Infrastructure.Caching
             return Task.FromResult(value);
         }
 
-        public Task SetAsync<T>(string key, T value, TimeSpan expiration)
+        public Task SetAsync<T>(string key, T value, TimeSpan? expiration)
         {
-            _cache.Set(key, value, expiration);
+            if (expiration.HasValue)
+            {
+                _cache.Set(key, value, expiration.Value);
+            }
+            else
+            {
+                _cache.Set(key, value);
+            }
             return Task.CompletedTask;
         }
 

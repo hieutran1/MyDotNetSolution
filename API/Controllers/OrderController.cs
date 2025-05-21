@@ -1,6 +1,7 @@
 using Application.DTOs;
 using Application.Services;
 using Microsoft.AspNetCore.Mvc;
+using System;
 using System.Threading.Tasks;
 
 namespace API.Controllers
@@ -17,7 +18,7 @@ namespace API.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<OrderDto>> Get(int id)
+        public async Task<ActionResult<OrderDto>> Get(Guid id)
         {
             var order = await _orderService.GetOrderAsync(id);
             if (order == null) return NotFound();

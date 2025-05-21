@@ -1,68 +1,59 @@
+using Core.Interfaces;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
+using System.Reflection;
 using System.Threading.Tasks;
-using Core.Interfaces;
 
 namespace Infrastructure.Repositories
 {
     public class Repository<T> : IRepository<T> where T : class
     {
-        private readonly List<T> _dataStore = [];
+        private readonly ConcurrentDictionary<Guid, T> _store = new ConcurrentDictionary<Guid, T>();
+        private readonly PropertyInfo? _idProperty;
 
-        public Task AddAsync(T entity)
+        public Repository()
         {
-            _dataStore.Add(entity);
-            return Task.CompletedTask;
+            _idProperty = typeof(T).GetProperty("Id");
+            if (_idProperty == null || _idProperty.PropertyType != typeof(Guid))
+                throw new InvalidOperationException("Entity must have an Id property of type Guid.");
         }
 
-        public Task UpdateAsync(T entity)
+        private Guid GetId(T entity)
         {
-            // Update logic here (e.g., find and replace in _dataStore)
-            return Task.CompletedTask;
+            return (Guid)(_idProperty?.GetValue(entity) ?? throw new InvalidOperationException("Id property not found."));
         }
 
-        public Task DeleteAsync(T entity)
+        public Task<T?> GetByIdAsync(Guid id)
         {
-            _dataStore.Remove(entity);
-            return Task.CompletedTask;
-        }
-
-        public Task DeleteAsync(int id)
-        {
-            var entity = GetById(id);
-            if (entity != null)
-            {
-                _dataStore.Remove(entity);
-            }
-            return Task.CompletedTask;
-        }
-
-        public Task<T?> GetAsync(Expression<Func<T, bool>> predicate)
-        {
-            var entity = _dataStore.AsQueryable().FirstOrDefault(predicate);
+            var entity = _store.Values.FirstOrDefault(e => GetId(e) == id);
             return Task.FromResult(entity);
-        }
-
-        public Task<T?> GetByIdAsync(int id)
-        {
-            var entity = GetById(id);
-            return Task.FromResult(entity);
-        }
-
-        // Helper method to get entity by id using reflection
-        private T? GetById(int id)
-        {
-            var prop = typeof(T).GetProperty("Id");
-            if (prop == null)
-                return null;
-            return _dataStore.FirstOrDefault(e => prop.GetValue(e)?.Equals(id) == true);
         }
 
         public Task<IEnumerable<T>> GetAllAsync()
         {
-            return Task.FromResult<IEnumerable<T>>(_dataStore);
+            return Task.FromResult<IEnumerable<T>>(_store.Values.ToList());
+        }
+
+        public Task<T> AddAsync(T entity)
+        {
+            var id = GetId(entity);
+            _store[id] = entity;
+            return Task.FromResult(entity);
+        }
+
+        public Task UpdateAsync(T entity)
+        {
+            var id = GetId(entity);
+            _store[id] = entity;
+            return Task.CompletedTask;
+        }
+
+        public Task DeleteAsync(Guid id)
+        {
+            _store.TryRemove(id, out _);
+            return Task.CompletedTask;
         }
     }
 }

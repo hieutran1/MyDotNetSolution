@@ -16,12 +16,12 @@ namespace Application.Services
 
         public OrderService(IUnitOfWork unitOfWork, ICacheService cacheService, IMessagingService messagingService)
         {
-            _unitOfWork = unitOfWork;
-            _cacheService = cacheService;
-            _messagingService = messagingService;
+            _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
+            _cacheService = cacheService ?? throw new ArgumentNullException(nameof(cacheService));
+            _messagingService = messagingService ?? throw new ArgumentNullException(nameof(messagingService));
         }
 
-        public async Task<OrderDto?> GetOrderAsync(int id)
+        public async Task<OrderDto?> GetOrderAsync(Guid id)
         {
             var cacheKey = $"Order_{id}";
             var cached = await _cacheService.GetAsync<OrderDto>(cacheKey);
@@ -30,20 +30,34 @@ namespace Application.Services
             var order = await _unitOfWork.Orders.GetByIdAsync(id);
             if (order == null) return null;
 
-            var dto = new OrderDto { Id = order.Id, CustomerName = order.CustomerName, TotalAmount = order.TotalAmount };
+            var dto = new OrderDto
+            {
+                Id = order.Id,
+                CustomerName = order.CustomerName,
+                TotalAmount = order.TotalAmount
+            };
+
             await _cacheService.SetAsync(cacheKey, dto, CacheDuration);
             return dto;
         }
 
         public async Task CreateOrderAsync(OrderDto dto)
         {
+            if (dto == null) throw new ArgumentNullException(nameof(dto));
+
             await _unitOfWork.BeginTransactionAsync();
             try
             {
-                var order = new Order { Id = dto.Id, CustomerName = dto.CustomerName, TotalAmount = dto.TotalAmount };
+                var order = new Order
+                {
+                    Id = dto.Id,
+                    CustomerName = dto.CustomerName,
+                    TotalAmount = dto.TotalAmount
+                };
+
                 await _unitOfWork.Orders.AddAsync(order);
 
-                // Invalidate cache
+                // Invalidate cache for this order
                 await _cacheService.RemoveAsync($"Order_{order.Id}");
 
                 // Publish message

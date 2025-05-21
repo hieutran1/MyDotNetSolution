@@ -1,5 +1,6 @@
 using Core.Interfaces;
 using Core.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,33 +9,41 @@ namespace Infrastructure.Repositories
 {
     public class OrderRepository : IRepository<Order>
     {
-        private static readonly List<Order> _orders = new();
+        private readonly List<Order> _orders = new List<Order>();
 
-        public Task AddAsync(Order entity)
-        {
-            _orders.Add(entity);
-            return Task.CompletedTask;
-        }
-
-        public Task DeleteAsync(int id)
+        public Task<Order?> GetByIdAsync(Guid id)
         {
             var order = _orders.FirstOrDefault(o => o.Id == id);
-            if (order != null) _orders.Remove(order);
-            return Task.CompletedTask;
+            return Task.FromResult(order);
         }
 
-        public Task<IEnumerable<Order>> GetAllAsync() => Task.FromResult<IEnumerable<Order>>(_orders);
+        public Task<IEnumerable<Order>> GetAllAsync()
+        {
+            return Task.FromResult<IEnumerable<Order>>(_orders.ToList());
+        }
 
-        public Task<Order?> GetByIdAsync(int id) => Task.FromResult(_orders.FirstOrDefault(o => o.Id == id));
+        public Task<Order> AddAsync(Order entity)
+        {
+            _orders.Add(entity);
+            return Task.FromResult(entity);
+        }
 
         public Task UpdateAsync(Order entity)
         {
-            var order = _orders.FirstOrDefault(o => o.Id == entity.Id);
-            if (order != null)
+            var existing = _orders.FirstOrDefault(o => o.Id == entity.Id);
+            if (existing != null)
             {
-                order.CustomerName = entity.CustomerName;
-                order.TotalAmount = entity.TotalAmount;
+                _orders.Remove(existing);
+                _orders.Add(entity);
             }
+            return Task.CompletedTask;
+        }
+
+        public Task DeleteAsync(Guid id)
+        {
+            var order = _orders.FirstOrDefault(o => o.Id == id);
+            if (order != null)
+                _orders.Remove(order);
             return Task.CompletedTask;
         }
     }

@@ -1,74 +1,75 @@
 using Core.Interfaces;
+using Microsoft.Extensions.Caching.Memory;
 using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Threading.Tasks;
 
 namespace Infrastructure.Repositories
 {
     public class CachedRepository<T> : IRepository<T> where T : class
     {
-        private readonly IRepository<T> _repository;
-        private readonly ICacheService _cacheService;
-        private readonly TimeSpan _cacheExpiration = TimeSpan.FromMinutes(5);
+        private readonly IRepository<T> _innerRepository;
+        private readonly IMemoryCache _cache;
+        private readonly PropertyInfo _idProperty;
+        private readonly string _cacheKeyPrefix = typeof(T).FullName + "_";
 
-        public CachedRepository(IRepository<T> repository, ICacheService cacheService)
+        public CachedRepository(IRepository<T> innerRepository, IMemoryCache cache)
         {
-            _repository = repository;
-            _cacheService = cacheService;
+            _innerRepository = innerRepository;
+            _cache = cache;
+            _idProperty = typeof(T).GetProperty("Id") ?? throw new InvalidOperationException("Entity must have an Id property of type Guid.");
         }
 
-        public async Task<T?> GetByIdAsync(int id)
+        private Guid GetId(T entity)
         {
-            string cacheKey = $"{typeof(T).Name}_Id_{id}";
-            var cachedEntity = await _cacheService.GetAsync<T>(cacheKey);
+            return (Guid)(_idProperty.GetValue(entity) ?? throw new InvalidOperationException("Id property not found."));
+        }
 
-            if (cachedEntity != null)
+        private string GetCacheKey(Guid id) => _cacheKeyPrefix + id.ToString();
+
+        public async Task<T?> GetByIdAsync(Guid id)
+        {
+            var cacheKey = GetCacheKey(id);
+            if (_cache.TryGetValue(cacheKey, out T? entity))
             {
-                return cachedEntity;
+                return entity;
             }
 
-            var entity = await _repository.GetByIdAsync(id);
+            entity = await _innerRepository.GetByIdAsync(id);
             if (entity != null)
             {
-                await _cacheService.SetAsync(cacheKey, entity, _cacheExpiration);
+                _cache.Set(cacheKey, entity, TimeSpan.FromMinutes(10));
             }
-
             return entity;
         }
 
         public async Task<IEnumerable<T>> GetAllAsync()
         {
-            string cacheKey = $"{typeof(T).Name}_All";
-            var cachedEntities = await _cacheService.GetAsync<IEnumerable<T>>(cacheKey);
-
-            if (cachedEntities != null)
-            {
-                return cachedEntities;
-            }
-
-            var entities = await _repository.GetAllAsync();
-            await _cacheService.SetAsync(cacheKey, entities, _cacheExpiration);
-
-            return entities;
+            // For simplicity, do not cache the entire collection
+            return await _innerRepository.GetAllAsync();
         }
 
-        public async Task AddAsync(T entity)
+        public async Task<T> AddAsync(T entity)
         {
-            await _repository.AddAsync(entity);
-            await _cacheService.RemoveAsync($"{typeof(T).Name}_All");
+            var added = await _innerRepository.AddAsync(entity);
+            var cacheKey = GetCacheKey(GetId(added));
+            _cache.Set(cacheKey, added, TimeSpan.FromMinutes(10));
+            return added;
         }
 
         public async Task UpdateAsync(T entity)
         {
-            await _repository.UpdateAsync(entity);
-            await _cacheService.RemoveAsync($"{typeof(T).Name}_All");
+            await _innerRepository.UpdateAsync(entity);
+            var cacheKey = GetCacheKey(GetId(entity));
+            _cache.Set(cacheKey, entity, TimeSpan.FromMinutes(10));
         }
 
-        public async Task DeleteAsync(int id)
+        public async Task DeleteAsync(Guid id)
         {
-            await _repository.DeleteAsync(id);
-            await _cacheService.RemoveAsync($"{typeof(T).Name}_Id_{id}");
-            await _cacheService.RemoveAsync($"{typeof(T).Name}_All");
+            await _innerRepository.DeleteAsync(id);
+            var cacheKey = GetCacheKey(id);
+            _cache.Remove(cacheKey);
         }
     }
 }
