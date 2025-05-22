@@ -72,4 +72,26 @@ await messagingService.SubscribeAsync<Order>("OrderQueue", async order =>
     await Task.CompletedTask;
 });
 
+// using (var scope = app.Services.CreateScope())
+// {
+//     var container = scope.ServiceProvider;
+//     var db = container.GetRequiredService<AppDbContext>();
+
+//     db.Database.EnsureCreated();
+
+//     if (!db.Customers.Any())
+//     {
+//         try
+//         {
+//             db.Initialize();
+//         }
+//         catch (Exception ex)
+//         {
+//             var logger = container.GetRequiredService<ILogger<Program>>();
+//             logger.LogError(ex, "An error occurred seeding the database. Error: {Message}", ex.Message);
+//         }
+//     }
+// }
+
 app.Run();
+public partial class Program { }
