@@ -1,4 +1,6 @@
 using System;
+using System.Data.Common;
+using System.Linq;
 using System.Threading.Tasks;
 using Application.Services;
 using Core.Entities;
@@ -11,6 +13,7 @@ using Infrastructure.Repositories;
 using Infrastructure.Services;
 using Infrastructure.UnitOfWork;
 using Microsoft.AspNetCore.Builder;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -42,8 +45,22 @@ builder.Services.AddSingleton<IRepository<Customer>>(sp =>
 
 builder.Services.AddSingleton<ICustomerService, InMemoryCustomerService>();
 
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+// builder.Services.AddDbContext<AppDbContext>(options =>
+//     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+// Create open SqliteConnection so EF won't automatically close it.
+builder.Services.AddSingleton<DbConnection>(container =>
+{
+    var connection = new SqliteConnection("DataSource=:memory:");
+    connection.Open();
+
+    return connection;
+});
+
+builder.Services.AddDbContext<AppDbContext>((container, options) =>
+{
+    var connection = container.GetRequiredService<DbConnection>();
+    options.UseSqlite(connection);
+});
 
 builder.Services.AddScoped<ICustomerService, EfCustomerRepository>();
 
@@ -72,26 +89,28 @@ await messagingService.SubscribeAsync<Order>("OrderQueue", async order =>
     await Task.CompletedTask;
 });
 
-// using (var scope = app.Services.CreateScope())
-// {
-//     var container = scope.ServiceProvider;
-//     var db = container.GetRequiredService<AppDbContext>();
+using (var scope = app.Services.CreateScope())
+{
+    var container = scope.ServiceProvider;
+    var db = container.GetRequiredService<AppDbContext>();
 
-//     db.Database.EnsureCreated();
+    db.Database.EnsureCreated();
 
-//     if (!db.Customers.Any())
-//     {
-//         try
-//         {
-//             db.Initialize();
-//         }
-//         catch (Exception ex)
-//         {
-//             var logger = container.GetRequiredService<ILogger<Program>>();
-//             logger.LogError(ex, "An error occurred seeding the database. Error: {Message}", ex.Message);
-//         }
-//     }
-// }
+    if (!db.Customers.Any())
+    {
+        try
+        {
+            db.Initialize();
+        }
+        catch (Exception ex)
+        {
+            var logger = container.GetRequiredService<ILogger<Program>>();
+            logger.LogError(ex, "An error occurred seeding the database. Error: {Message}", ex.Message);
+        }
+    }
+}
 
 app.Run();
+
+// Expose Program for test project
 public partial class Program { }

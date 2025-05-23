@@ -3,11 +3,11 @@ using Microsoft.AspNetCore.Mvc.Testing;
 
 namespace API.IntegrationTests;
 
-public class CustomerApiIntegrationTests : IClassFixture<CustomWebApplicationFactory<Program>>
+public class CustomerApiIntegrationTests : IClassFixture<WebApplicationFactory<Program>>
 {
     private readonly HttpClient _client;
 
-    public CustomerApiIntegrationTests(CustomWebApplicationFactory<Program> factory)
+    public CustomerApiIntegrationTests(WebApplicationFactory<Program> factory)
     {
         _client = factory.CreateClient(new WebApplicationFactoryClientOptions
         {
