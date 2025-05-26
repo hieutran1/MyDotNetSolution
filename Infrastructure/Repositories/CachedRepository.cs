@@ -1,6 +1,5 @@
-using Core.Interfaces;
 using Microsoft.Extensions.Caching.Memory;
-using MyDotNetSolution.Core;
+using MyDotNetSolution.Core.Shared;
 using System;
 using System.Collections.Generic;
 using System.Reflection;

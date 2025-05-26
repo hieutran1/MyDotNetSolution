@@ -3,9 +3,7 @@ using System.Data.Common;
 using System.Linq;
 using System.Threading.Tasks;
 using Application.Services;
-using Core.Entities;
-using Core.Interfaces;
-using Core.Models;
+using Application.Shared.Interfaces;
 using Infrastructure.Caching;
 using Infrastructure.Data;
 using Infrastructure.Messaging;
@@ -18,6 +16,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using MyDotNetSolution.Core.Entities;
+using MyDotNetSolution.Core.Shared;
 
 var builder = WebApplication.CreateBuilder(args);
 

@@ -1,5 +1,5 @@
-using Core.Entities;
 using Core.Interfaces;
+using MyDotNetSolution.Core.Entities;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;

@@ -1,50 +1,30 @@
-using Core.Interfaces;
-using Core.Models;
+using MyDotNetSolution.Core.Entities;
+using MyDotNetSolution.Core.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Infrastructure.Repositories
+namespace Infrastructure.Repositories;
+
+public class OrderRepository : Repository<Order>, IOrderRepository
 {
-    public class OrderRepository : IRepository<Order>
+    public Task<IEnumerable<Order>> GetOrdersByCustomerAsync(string customerName)
     {
-        private readonly List<Order> _orders = new List<Order>();
+        return FindAsync(o => !string.IsNullOrEmpty(o.CustomerName) && o.CustomerName.Equals(customerName, StringComparison.OrdinalIgnoreCase));
+    }
 
-        public Task<Order?> GetByIdAsync(Guid id)
-        {
-            var order = _orders.FirstOrDefault(o => o.Id == id);
-            return Task.FromResult(order);
-        }
+    public Task<IEnumerable<Order>> SearchByAmountRangeAsync(decimal minAmount, decimal maxAmount)
+    {
+        return FindAsync(o => o.TotalAmount >= minAmount && o.TotalAmount <= maxAmount);
+    }
 
-        public Task<IEnumerable<Order>> GetAllAsync()
-        {
-            return Task.FromResult<IEnumerable<Order>>(_orders.ToList());
-        }
-
-        public Task<Order> AddAsync(Order entity)
-        {
-            _orders.Add(entity);
-            return Task.FromResult(entity);
-        }
-
-        public Task UpdateAsync(Order entity)
-        {
-            var existing = _orders.FirstOrDefault(o => o.Id == entity.Id);
-            if (existing != null)
-            {
-                _orders.Remove(existing);
-                _orders.Add(entity);
-            }
-            return Task.CompletedTask;
-        }
-
-        public Task DeleteAsync(Guid id)
-        {
-            var order = _orders.FirstOrDefault(o => o.Id == id);
-            if (order != null)
-                _orders.Remove(order);
-            return Task.CompletedTask;
-        }
+    public Task<IEnumerable<Order>> GetRecentOrdersAsync(int count)
+    {
+        var result = _store.Values
+            .OrderByDescending(o => o.CreatedAt)
+            .Take(count)
+            .ToList();
+        return Task.FromResult<IEnumerable<Order>>(result);
     }
 }

@@ -1,5 +1,4 @@
-using Core.Interfaces;
-using MyDotNetSolution.Core;
+using MyDotNetSolution.Core.Shared;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;

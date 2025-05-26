@@ -1,6 +1,6 @@
-using Core.Entities;
-using Core.Interfaces;
+using Application.Shared.Interfaces;
 using Microsoft.AspNetCore.Mvc;
+using MyDotNetSolution.Core.Entities;
 using System;
 using System.Threading.Tasks;
 

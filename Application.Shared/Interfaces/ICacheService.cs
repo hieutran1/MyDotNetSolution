@@ -1,7 +1,4 @@
-using System;
-using System.Threading.Tasks;
-
-namespace Core.Interfaces
+namespace Application.Shared.Interfaces
 {
     public interface ICacheService
     {
@@ -9,4 +6,5 @@ namespace Core.Interfaces
         Task SetAsync<T>(string key, T value, TimeSpan? expiration = null);
         Task RemoveAsync(string key);
     }
+
 }

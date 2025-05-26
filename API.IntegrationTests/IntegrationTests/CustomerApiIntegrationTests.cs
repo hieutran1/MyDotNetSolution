@@ -1,5 +1,5 @@
-using Core.Entities;
 using Microsoft.AspNetCore.Mvc.Testing;
+using MyDotNetSolution.Core.Entities;
 
 namespace API.IntegrationTests;
 

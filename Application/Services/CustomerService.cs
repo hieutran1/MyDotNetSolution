@@ -1,59 +1,204 @@
-using Core.Entities;
-using Core.Interfaces;
+using Application.Shared.DTOs;
+using Application.Shared.Interfaces;
+using Application.Shared.Messaging;
+using MyDotNetSolution.Core.Entities;
+using MyDotNetSolution.Core.Shared;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
-namespace Application.Services
+namespace Application.Services;
+
+public class CustomerService : ICustomerService
 {
-    public class CustomerService : ICustomerService
+    private readonly IUnitOfWork _unitOfWork;
+    private readonly ICacheService _cache;
+    private readonly IMessagingService _messagingService;
+    private const string CachePrefix = "customer_";
+    private static readonly TimeSpan CacheDuration = TimeSpan.FromMinutes(10);
+
+    public CustomerService(IUnitOfWork unitOfWork, ICacheService cache, IMessagingService messagingService)
     {
-        private readonly IRepository<Customer> _repository;
-        private readonly ICacheService _cache;
-        private const string CachePrefix = "customer_";
+        _unitOfWork = unitOfWork ?? throw new ArgumentNullException(nameof(unitOfWork));
+        _cache = cache ?? throw new ArgumentNullException(nameof(cache));
+        _messagingService = messagingService ?? throw new ArgumentNullException(nameof(messagingService));
+    }
 
-        public CustomerService(IRepository<Customer> repository, ICacheService cache)
+    public async Task<CustomerDto?> GetByIdAsync(Guid id)
+    {
+        var cacheKey = $"{CachePrefix}{id}";
+        var cached = await _cache.GetAsync<CustomerDto>(cacheKey);
+        if (cached != null) return cached;
+
+        var customer = await _unitOfWork.CustomerRepository.GetByIdAsync(id);
+        if (customer == null) return null;
+
+        var dto = new CustomerDto
         {
-            _repository = repository;
-            _cache = cache;
-        }
+            Id = customer.Id,
+            Name = customer.Name,
+            Email = customer.Email
+        };
 
-        public async Task<Customer?> GetByIdAsync(Guid id)
+        await _cache.SetAsync(cacheKey, dto, CacheDuration);
+        return dto;
+    }
+
+    public async Task<IEnumerable<CustomerDto>> GetAllAsync()
+    {
+        var customers = await _unitOfWork.CustomerRepository.GetAllAsync();
+        return customers.Select(c => new CustomerDto
         {
-            var cacheKey = $"{CachePrefix}{id}";
-            var cached = await _cache.GetAsync<Customer>(cacheKey);
-            if (cached != null) return cached;
+            Id = c.Id,
+            Name = c.Name,
+            Email = c.Email
+        }).ToList();
+    }
 
-            var customer = await _repository.GetByIdAsync(id);
-            if (customer != null)
-                await _cache.SetAsync(cacheKey, customer, TimeSpan.FromMinutes(10));
-            return customer;
-        }
+    public async Task<CustomerDto> CreateAsync(CustomerDto dto)
+    {
+        if (dto == null) throw new ArgumentNullException(nameof(dto));
 
-        public async Task<IEnumerable<Customer>> GetAllAsync()
+        await _unitOfWork.BeginTransactionAsync();
+        try
         {
-            // Optionally cache all customers if needed
-            return await _repository.GetAllAsync();
-        }
+            var customer = new Customer
+            {
+                Id = dto.Id,
+                Name = dto.Name,
+                Email = dto.Email
+            };
 
-        public async Task<Customer> CreateAsync(Customer customer)
-        {
-            var created = await _repository.AddAsync(customer);
-            var cacheKey = $"{CachePrefix}{created.Id}";
-            await _cache.SetAsync(cacheKey, created, TimeSpan.FromMinutes(10));
-            return created;
-        }
+            await _unitOfWork.CustomerRepository.AddAsync(customer);
+            await _unitOfWork.CommitTransactionAsync();
 
-        public async Task UpdateAsync(Customer customer)
-        {
-            await _repository.UpdateAsync(customer);
             var cacheKey = $"{CachePrefix}{customer.Id}";
-            await _cache.SetAsync(cacheKey, customer, TimeSpan.FromMinutes(10));
-        }
+            await _cache.SetAsync(cacheKey, dto, CacheDuration);
 
-        public async Task DeleteAsync(Guid id)
+            var headers = new Dictionary<string, object> { { "CustomerId", customer.Id }, { "Action", "Create" } };
+            await _messagingService.PublishAsync("CustomerQueue", new CustomerCreatedMessage
+            {
+                CustomerId = customer.Id,
+                Name = customer.Name,
+                Email = customer.Email
+            }, headers);
+
+            return dto;
+        }
+        catch
         {
-            await _repository.DeleteAsync(id);
+            await _unitOfWork.RollbackTransactionAsync();
+            throw;
+        }
+    }
+
+    public async Task UpdateAsync(CustomerDto dto)
+    {
+        if (dto == null) throw new ArgumentNullException(nameof(dto));
+
+        await _unitOfWork.BeginTransactionAsync();
+        try
+        {
+            var customer = await _unitOfWork.CustomerRepository.GetByIdAsync(dto.Id);
+            if (customer == null) throw new InvalidOperationException("Customer not found.");
+
+            customer.Name = dto.Name;
+            customer.Email = dto.Email;
+
+            await _unitOfWork.CustomerRepository.UpdateAsync(customer);
+            await _unitOfWork.CommitTransactionAsync();
+
+            var cacheKey = $"{CachePrefix}{customer.Id}";
+            await _cache.SetAsync(cacheKey, dto, CacheDuration);
+
+            var headers = new Dictionary<string, object> { { "CustomerId", customer.Id }, { "Action", "Update" } };
+            await _messagingService.PublishAsync("CustomerQueue", new CustomerUpdatedMessage
+            {
+                CustomerId = customer.Id,
+                Name = customer.Name,
+                Email = customer.Email
+            }, headers);
+        }
+        catch
+        {
+            await _unitOfWork.RollbackTransactionAsync();
+            throw;
+        }
+    }
+
+    public async Task DeleteAsync(Guid id)
+    {
+        await _unitOfWork.BeginTransactionAsync();
+        try
+        {
+            await _unitOfWork.CustomerRepository.DeleteAsync(id);
+            await _unitOfWork.CommitTransactionAsync();
+
+            var cacheKey = $"{CachePrefix}{id}";
+            await _cache.RemoveAsync(cacheKey);
+
+            var headers = new Dictionary<string, object> { { "CustomerId", id }, { "Action", "Delete" } };
+            await _messagingService.PublishAsync("CustomerQueue", new CustomerDeletedMessage
+            {
+                CustomerId = id
+            }, headers);
+        }
+        catch
+        {
+            await _unitOfWork.RollbackTransactionAsync();
+            throw;
+        }
+    }
+
+    public async Task<IEnumerable<CustomerDto>> SearchByNameAsync(string name)
+    {
+        var customers = await _unitOfWork.CustomerRepository.SearchByNameAsync(name);
+        return customers.Select(c => new CustomerDto
+        {
+            Id = c.Id,
+            Name = c.Name,
+            Email = c.Email
+        }).ToList();
+    }
+
+    public async Task<CustomerDto?> GetByEmailAsync(string email)
+    {
+        var customer = await _unitOfWork.CustomerRepository.GetByEmailAsync(email);
+        if (customer == null) return null;
+        return new CustomerDto
+        {
+            Id = customer.Id,
+            Name = customer.Name,
+            Email = customer.Email
+        };
+    }
+
+    public async Task<bool> ExistsAsync(Guid id)
+    {
+        return await _unitOfWork.CustomerRepository.ExistsAsync(id);
+    }
+
+    public async Task<int> CountAsync()
+    {
+        return await _unitOfWork.CustomerRepository.CountAsync();
+    }
+
+    public async Task<IEnumerable<CustomerDto>> GetPagedAsync(int pageNumber, int pageSize)
+    {
+        var customers = await _unitOfWork.CustomerRepository.GetPagedAsync(pageNumber, pageSize);
+        return customers.Select(c => new CustomerDto
+        {
+            Id = c.Id,
+            Name = c.Name,
+            Email = c.Email
+        }).ToList();
+    }
+
+    public async Task ClearAllCustomerCacheAsync(IEnumerable<Guid> customerIds)
+    {
+        foreach (var id in customerIds)
+        {
             var cacheKey = $"{CachePrefix}{id}";
             await _cache.RemoveAsync(cacheKey);
         }

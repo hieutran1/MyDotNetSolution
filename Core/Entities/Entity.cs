@@ -1,6 +1,6 @@
 using System;
 
-namespace Core.Models;
+namespace MyDotNetSolution.Core.Entities;
 public abstract class Entity
 {
     public int Id { get; set; }

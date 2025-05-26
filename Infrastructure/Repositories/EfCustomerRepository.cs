@@ -1,7 +1,7 @@
-using Core.Entities;
 using Core.Interfaces;
 using Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
+using MyDotNetSolution.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
