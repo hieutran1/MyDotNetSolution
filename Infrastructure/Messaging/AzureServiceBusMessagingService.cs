@@ -1,5 +1,6 @@
+using Application.Shared.Interfaces;
+using Application.Shared.Messaging;
 using Azure.Messaging.ServiceBus;
-using Core.Interfaces;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -19,7 +20,7 @@ namespace Infrastructure.Messaging
             _connectionString = connectionString;
         }
 
-        public async Task PublishAsync<T>(string queueOrTopic, T message, IDictionary<string, object>? customProperties = null)
+        public async Task PublishAsync(string queueOrTopic, BaseMessage message, IDictionary<string, object>? customProperties = null)
         {
             await using var client = new ServiceBusClient(_connectionString);
             var sender = client.CreateSender(queueOrTopic);
@@ -52,7 +53,7 @@ namespace Infrastructure.Messaging
             }
         }
 
-        public async Task SubscribeAsync<T>(string queueOrTopic, Func<T, Task> onMessageReceived)
+        public async Task SubscribeAsync<T>(string queueOrTopic, Func<T, Task> onMessageReceived) where T : BaseMessage
         {
             await using var client = new ServiceBusClient(_connectionString);
             var processor = client.CreateProcessor(queueOrTopic, new ServiceBusProcessorOptions());

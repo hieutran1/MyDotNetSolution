@@ -1,5 +1,6 @@
+using Application.Shared.Interfaces;
+using Application.Shared.Messaging;
 using Confluent.Kafka;
-using Core.Interfaces;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -27,7 +28,7 @@ namespace Infrastructure.Messaging
             };
         }
 
-        public async Task PublishAsync<T>(string topic, T message, IDictionary<string, object>? customHeaders = null)
+        public async Task PublishAsync(string topic, BaseMessage message, IDictionary<string, object>? customHeaders = null)
         {
             using var producer = new ProducerBuilder<Null, string>(_producerConfig).Build();
             var serializedMessage = JsonSerializer.Serialize(message);
@@ -58,7 +59,7 @@ namespace Infrastructure.Messaging
             }
         }
 
-        public async Task SubscribeAsync<T>(string topic, Func<T, Task> onMessageReceived)
+        public async Task SubscribeAsync<T>(string topic, Func<T, Task> onMessageReceived) where T : BaseMessage
         {
             using var consumer = new ConsumerBuilder<Ignore, string>(_consumerConfig).Build();
             consumer.Subscribe(topic);
