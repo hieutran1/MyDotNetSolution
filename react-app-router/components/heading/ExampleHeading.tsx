@@ -2,7 +2,7 @@ import Button from "components/button/Button";
 import Heading from "./Heading";
 import Subheading from "./Subheading";
 
-export default function Example_Heading() {
+export default function ExampleHeading() {
     return (
         <>
             <div className="flex w-full flex-wrap items-end justify-between gap-4 border-b border-zinc-950/10 pb-6 dark:border-white/10">

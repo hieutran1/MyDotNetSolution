@@ -1,8 +1,19 @@
 
-export function PaginationNext() {
+export function PaginationNext({
+    href,
+    children = 'Next'
+}: {
+    href: string;
+    children?: React.ReactNode;
+}) {
     return (
-        <li className="page-item">
-            <span className="page-link">...</span>
-        </li>
+        <span>
+            <a
+                className="flex items-center justify-center px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-r-md hover:bg-gray-50"
+                href={href}
+            >
+                {children}
+            </a>
+        </span>
     );
 }

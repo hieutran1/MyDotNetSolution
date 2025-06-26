@@ -7,7 +7,7 @@ import Label from "components/fieldset/Label";
 import Text from "components/text/Text";
 import Description from "components/fieldset/Description";
 
-export default function Example() {
+export default function ExampleCheckbox() {
   return (
     <Fieldset>
       <Legend>Discoverability</Legend>

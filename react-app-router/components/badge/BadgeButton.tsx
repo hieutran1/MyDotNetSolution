@@ -2,11 +2,14 @@ import { Button } from "@headlessui/react";
 
 export default function BadgeButton({
     color = 'zinc',
-    href
+    href,
+    children
 }: {
     color?: string;
     href?: string;
+    children?: React.ReactNode;
 }) {
     return (
-        <Button></Button>)
+        <Button>{children}</Button>
+    )
 }

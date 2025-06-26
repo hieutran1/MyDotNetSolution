@@ -1,4 +1,4 @@
-import { Input as InputH } from "@headlessui/react";
+import * as Headless from "@headlessui/react";
 
 export default function Input({
     disabled = false,
@@ -7,7 +7,9 @@ export default function Input({
     defaultValue,
     value,
     placeholder,
-    onChange
+    onChange,
+    type,
+    autoFocus = false
 }: {
     disabled?: boolean;
     invalid?: boolean;
@@ -16,16 +18,21 @@ export default function Input({
     value?: string;
     placeholder?: string;
     onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+    type?: string;
+    autoFocus?: boolean;
 }) {
     return (
-        <InputH
-            type="text"
+        <Headless.Input
+            as="input"
+            type={type || "text"}
             name={name}
             defaultValue={defaultValue}
             value={value}
             onChange={onChange}
             disabled={disabled}
-            className={`block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 ${invalid ? "border-red-500" : ""
-                }`} />
+            autoFocus={autoFocus}
+            placeholder={placeholder}
+            className={`block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 
+                ${invalid ? " border-red-500" : ""}`} />
     );
 }

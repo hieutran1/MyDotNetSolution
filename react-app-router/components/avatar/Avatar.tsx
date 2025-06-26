@@ -2,12 +2,14 @@ export default function Avatar({
   src,
   square = false,
   initials,
-  className
+  className,
+  slot = 'icon',
 }: {
   src?: string;
   square?: boolean;
   initials?: string;
   className?: string;
+  slot?: 'icon' | 'label';
 }) {
   return (
     <span
