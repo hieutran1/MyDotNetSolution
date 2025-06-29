@@ -23,7 +23,7 @@ export default [
     route("components/dialog", "../components/dialog/ExampleDialog.tsx"),
     route("components/divider", "../components/divider/ExampleDivider.tsx"),
     
-    route("components/dropdown", "../components/dropdown/ExampleDropdown.tsx"),
+    route("components/dropdown", "../components/dropdown/ExampleDropdown.tsx"), //done
     route("components/fieldset", "../components/fieldset/ExampleFieldset.tsx"), //done
     
     route("components/heading", "../components/heading/ExampleHeading.tsx"),
@@ -33,7 +33,9 @@ export default [
     route("components/pagination", "../components/pagination/ExamplePagination.tsx"),
     route("components/radio", "../components/radio/ExampleRadio.tsx"),
     route("components/select", "../components/select/ExampleSelect.tsx"),
+
     route("components/sidebar", "../components/sidebar/ExampleSidebar.tsx"),
+
     route("components/switch", "../components/switch/ExampleSwitch.tsx"),
     route("components/table", "../components/table/ExampleTable.tsx"),
     route("components/text", "../components/text/ExampleText.tsx"),
