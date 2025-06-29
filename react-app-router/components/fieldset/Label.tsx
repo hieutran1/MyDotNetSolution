@@ -1,4 +1,4 @@
-import { Label as LabelH } from "@headlessui/react";
+import * as Headless from "@headlessui/react";
 
 export default function Label({
     children,
@@ -6,10 +6,11 @@ export default function Label({
     children: React.ReactNode;
 }) {
     return (
-        <LabelH
+        <Headless.Label
             as="label"
-            className="block text-sm font-medium text-gray-700">
+            data-slot="label"
+            className="text-base/6 text-zinc-950 select-none data-disabled:opacity-50 sm:text-sm/6 dark:text-white">
             {children}
-        </LabelH>
+        </Headless.Label>
     );
 }

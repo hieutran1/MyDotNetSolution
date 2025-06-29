@@ -1,4 +1,12 @@
+
+
 @import "tailwindcss";
+
+/* @theme {
+  --font-sans: Inter, sans-serif;
+} */
+
+/* 
 
 @theme {
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
@@ -12,4 +20,4 @@ body {
   @media (prefers-color-scheme: dark) {
     color-scheme: dark;
   }
-}
+}  */

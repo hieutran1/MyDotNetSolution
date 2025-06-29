@@ -1,4 +1,4 @@
-import { Button as ButtonH } from "@headlessui/react";
+import * as Headless from "@headlessui/react";
 
 export default function Button({
   type = 'button',
@@ -8,7 +8,8 @@ export default function Button({
   disabled = false,
   href,
   children,
-  onClick
+  onClick,
+  className = ''
 }: {
   type?: 'button' | 'submit' | 'reset';
   color?: string;
@@ -18,12 +19,15 @@ export default function Button({
   href?: string;
   children: React.ReactNode;
   onClick?: () => void;
+  className?: string;
 }) {
   return (
-    <ButtonH
+    <Headless.Button
+      as={href ? 'a' : 'button'}
+      className={className}
       type={type}
-      className={`btn btn-${color}${outline ? '-outline' : ''}${plain ? '-plain' : ''}`}
       disabled={disabled}
-    >{children}</ButtonH>
+      onClick={onClick}
+    >{children}</Headless.Button>
   );
 }

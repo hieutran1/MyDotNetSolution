@@ -8,8 +8,9 @@ export default function DropdownSection({
     return (
         <MenuSection
             as="div"
-            className="px-4 py-2 text-sm text-gray-700 bg-gray-100"
-            children={children}
-        ></MenuSection>
+            className="col-span-full supports-[grid-template-columns:subgrid]:grid supports-[grid-template-columns:subgrid]:grid-cols-[auto_1fr_1.5rem_0.5rem_auto]"
+        >
+            {children}
+        </MenuSection>
     );
 }

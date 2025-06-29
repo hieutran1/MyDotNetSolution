@@ -4,7 +4,7 @@ export default function FieldGroup({
     children: React.ReactNode;
 }) {
     return (
-        <div className="space-y-4">
+        <div data-slot="control" className="space-y-8">
             {children}
         </div>
     );

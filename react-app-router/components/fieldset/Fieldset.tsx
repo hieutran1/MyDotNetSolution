@@ -6,8 +6,8 @@ export default function Fieldset({
     children: React.ReactNode;
 }) {
     return (
-        <div>
+        <fieldset className="*:data-[slot=text]:mt-1 [&>*+[data-slot=control]]:mt-6">
             {children}
-        </div>
+        </fieldset>
     );
 }

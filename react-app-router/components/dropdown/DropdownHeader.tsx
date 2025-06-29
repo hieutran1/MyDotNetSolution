@@ -4,7 +4,7 @@ export default function DropdownHeader({
     children: React.ReactNode;
 }) {
     return (
-        <div className="px-4 py-2 text-sm text-gray-700 bg-gray-100">
+        <div className="col-span-5 px-3.5 pt-2.5 pb-1 sm:px-3">
             {children}
         </div>
     );

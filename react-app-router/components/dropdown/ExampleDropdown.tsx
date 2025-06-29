@@ -3,18 +3,21 @@ import Dropdown from "./Dropdown";
 import DropdownButton from "./DropdownButton";
 import DropdownMenu from "./DropdownMenu";
 import DropdownItem from "./DropdownItem";
-import Label from "components/fieldset/Label";
 import DropdownHeading from "./DropdownHeading";
 import DropdownSection from "./DropdownSection";
 import DropdownDivider from "./DropdownDivider";
 import DropdownLabel from "./DropdownLabel";
 import DropdownHeader from "./DropdownHeader";
 import AvatarButton from "components/avatar/AvatarButton";
+import { Subheading } from "../heading";
+import ExampleHeadlessMenu from "./ExampleHeadlessMenu";
 
 export default function ExampleDropdown({
-  signOut, currentUser
+  signOut,
+  currentUser = { avatarUrl: "https://avatars.githubusercontent.com/u/2?v=4" }
 }: {
-  signOut: () => void, currentUser: { avatarUrl: string }
+  signOut: () => void,
+  currentUser: { avatarUrl: string }
 }) {
   function deleteUser() {
     if (confirm('Are you sure you want to delete this user?')) {
@@ -24,6 +27,9 @@ export default function ExampleDropdown({
 
   return (
     <>
+      <ExampleHeadlessMenu></ExampleHeadlessMenu>
+
+      <Subheading>Basic</Subheading>
       <Dropdown>
         <DropdownButton outline>
           Options
@@ -36,7 +42,7 @@ export default function ExampleDropdown({
         </DropdownMenu>
       </Dropdown>
 
-      <Label>With sections</Label>
+      <Subheading>With sections</Subheading>
       <Dropdown>
         <DropdownButton outline>
           Options
@@ -57,7 +63,7 @@ export default function ExampleDropdown({
         </DropdownMenu>
       </Dropdown>
 
-      <Label>With icons</Label>
+      <Subheading>With icons</Subheading>
       <Dropdown>
         <DropdownButton outline>
           Options
@@ -89,7 +95,7 @@ export default function ExampleDropdown({
         </DropdownMenu>
       </Dropdown>
 
-      <Label>With header</Label>
+      <Subheading>With header</Subheading>
       <Dropdown>
         <DropdownButton outline>
           Options
@@ -111,7 +117,7 @@ export default function ExampleDropdown({
         </DropdownMenu>
       </Dropdown>
 
-      <Label>With avatar trigger</Label>
+      <Subheading>With avatar trigger</Subheading>
       <Dropdown>
         <DropdownButton className="size-8" as={AvatarButton} src={currentUser.avatarUrl} aria-label="Account options" />
         <DropdownMenu anchor="bottom">

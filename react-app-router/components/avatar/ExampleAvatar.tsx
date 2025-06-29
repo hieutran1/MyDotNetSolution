@@ -1,5 +1,5 @@
 import Label from "components/fieldset/Label";
-import Avatar from "./Avatar";
+import { Avatar } from "./Avatar";
 
 const USERS = [
     { avatarUrl: "https://i.pravatar.cc/150?img=1" },

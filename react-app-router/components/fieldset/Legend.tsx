@@ -4,7 +4,9 @@ export default function Legend({
     children: React.ReactNode;
 }) {
     return (
-        <div className="text-sm font-semibold text-gray-900 dark:text-gray-100">
+        <div
+            data-slot="legend"
+            className="text-base/6 font-semibold text-zinc-950 data-disabled:opacity-50 sm:text-sm/6 dark:text-white">
             {children}
         </div>
     );

@@ -5,7 +5,8 @@ export default function Description({ children }: { children: React.ReactNode })
         <DescriptionH
             as="p"
             className="mt-1 text-sm text-gray-500"
-            role="note">
+            role="note"
+            data-slot="description">
             {children}
         </DescriptionH>
     );

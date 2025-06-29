@@ -1,5 +1,7 @@
 # Components
 - Flags: https://flagpack.xyz/docs/development/react/
+- Refactor UI: https://www.refactoringui.com/?ref=sidebar
+- Application UI: https://tailwindcss.com/plus/ui-blocks/application-ui
 
 1. Alert
     + You'll still get emails from people who accidentally deleted their account, but at least you tried.
@@ -67,9 +69,12 @@
     + Probably the number one reason you're looking for a UI kit in the first place.
 
     - `Dropdown` extends the Headless UI `<Menu>` component
+        + `children`: The dropdown button and menu
     - `DropdownButton` extends the `<Button>` component
     - `DropdownMenu` extends the Headless UI `<MenuItems>` component
+        + `children`: The dropdown items and sections
     - `DropdownItem` extends the Headless UI `<MenuItem>` component
+        + `children`: The dropdown item text
     - `DropdownHeader` extends the JSX `<div>` element
     - `DropdownSection` extends the Headless UI `<MenuSection>` component
     - `DropdownHeading` extends the Headless UI `<MenuHeading>` component
