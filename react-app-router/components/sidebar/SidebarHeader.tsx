@@ -4,7 +4,7 @@ export default function SidebarHeader({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col gap-2.5 px-3 pt-3 pb-2.5">
+    <div className="flex flex-col border-b border-zinc-950/5 p-4 dark:border-white/5 [&>[data-slot=section]+[data-slot=section]]:mt-2.5">
       {children}
     </div>
   );

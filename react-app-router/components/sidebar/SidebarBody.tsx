@@ -4,12 +4,11 @@ export default function SidebarBody({
   children: React.ReactNode;
 }) {
   return (
-    <nav
-        className="flex-1 overflow-y-auto px-3 pt-2.5 pb-3"
-        role="navigation"
-        aria-label="Sidebar navigation"
+    <div
+      className="flex flex-1 flex-col overflow-y-auto p-4 [&>[data-slot=section]+[data-slot=section]]:mt-8"
     >
-        {children}
-    </nav>
+      {children}
+    </div>
+
   );
 }

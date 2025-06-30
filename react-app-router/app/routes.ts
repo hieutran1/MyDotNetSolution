@@ -1,13 +1,15 @@
 import { type RouteConfig, index, route } from "@react-router/dev/routes";
 
 export default [
-    // index("routes/home.tsx"),
+    index("routes/home.tsx"),
     // route("about", "routes/about.tsx"),
     // route("contact", "routes/contact.tsx"),
 
-    index("../layouts/sidebar-layout/ExampleSidebarLayout.tsx"),
+    // index("../layouts/sidebar-layout/ExampleSidebarLayout.tsx"),
+    route("layouts/sidebar", "../layouts/sidebar-layout/ExampleSidebarLayout.tsx"),
+
     // route("sidebar", "../layouts/sidebar-layout/ExampleSidebarLayout.tsx"),
-    route("stacked", "../layouts/stacked-layout/ExampleStackedLayout.tsx"),
+    route("layouts/stacked", "../layouts/stacked-layout/ExampleStackedLayout.tsx"),
     route("auth/login", "../layouts/auth-layout/pages/LoginPage.tsx"),
     route("auth/register", "../layouts/auth-layout/pages/RegistrationPage.tsx"),
     route("auth/forgot-password", "../layouts/auth-layout/pages/ForgotPasswordPage.tsx"),
@@ -34,7 +36,7 @@ export default [
     route("components/radio", "../components/radio/ExampleRadio.tsx"),
     route("components/select", "../components/select/ExampleSelect.tsx"),
 
-    route("components/sidebar", "../components/sidebar/ExampleSidebar.tsx"),
+    route("components/sidebar", "../components/sidebar/ExampleSidebar.tsx"), //done
 
     route("components/switch", "../components/switch/ExampleSwitch.tsx"),
     route("components/table", "../components/table/ExampleTable.tsx"),

@@ -1,13 +1,14 @@
 export default function SidebarFooter({
     children,
+    className
 }: {
     children: React.ReactNode;
+    className?: string;
 }
 ) {
     return (
         <div
-            className="flex items-center justify-between px-3 pt-2.5 pb-3 text-sm text-gray-500 dark:text-gray-400"
-            role="contentinfo"
+            className={className + "flex flex-col border-t border-zinc-950/5 p-4 dark:border-white/5 [&>[data-slot=section]+[data-slot=section]]:mt-2.5"}
         >
             {children}
         </div>

@@ -1,5 +1,5 @@
 import Sidebar from './Sidebar';
-import SidebarBody from './Sidebar';
+import SidebarBody from './SidebarBody';
 import SidebarFooter from './SidebarFooter';
 import SidebarHeader from './SidebarHeader';
 import SidebarHeading from './SidebarHeading';

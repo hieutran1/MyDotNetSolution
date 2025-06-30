@@ -1,10 +1,15 @@
 export default function SidebarSection({
   children,
+  className
 }: {
   children: React.ReactNode;
+  className?: string;
 }) {
   return (
-    <div className="flex flex-col gap-2.5 px-3 pt-2.5 pb-3">
+    <div
+      data-slot="section"
+      className={(className ? className + ' ' : '') + "flex flex-col gap-0.5"}
+    >
       {children}
     </div>
   );
