@@ -2,6 +2,7 @@ import Field from "components/fieldset/Field";
 import Label from "components/fieldset/Label";
 import Select from "./Select";
 import ErrorMessage from "components/fieldset/ErrorMessage";
+import { Subheading } from "../heading";
 
 type ErrorHandler = {
     has: (field: string) => boolean;
@@ -14,7 +15,7 @@ export default function ExampleSelect({ errors }: {
 }) {
     return (
         <>
-            <Label>Basic</Label>
+            <Subheading>Basic</Subheading>
             <Field>
                 <Label>Project status</Label>
                 <Select name="status">
@@ -25,7 +26,8 @@ export default function ExampleSelect({ errors }: {
                 </Select>
             </Field>
 
-            <Label>Validation errors<Field>
+            <Subheading>Validation errors</Subheading>
+            <Field>
                 <Label>Project status</Label>
                 <Select name="status" defaultValue="" invalid={errors.has('status')}>
                     <option value="" disabled>
@@ -37,7 +39,7 @@ export default function ExampleSelect({ errors }: {
                     <option value="canceled">Canceled</option>
                 </Select>
                 {errors.has('status') && <ErrorMessage>{errors.get('status')}</ErrorMessage>}
-            </Field></Label>
+            </Field>
         </>
     )
 }

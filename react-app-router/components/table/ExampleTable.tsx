@@ -25,6 +25,7 @@ import DialogBody from 'components/dialog/DialogBody'
 import DialogTitle from 'components/dialog/DialogTitle'
 import DialogDescription from 'components/dialog/DialogDescription'
 import { useState } from 'react'
+import { Subheading } from '../heading'
 
 const PLAYERS = [
   { rank: 1, name: 'Connor McDavid', position: 'C', gamesPlayed: 56, goals: 30, assists: 45, points: 75, plusMinus: 20 },
@@ -113,7 +114,7 @@ export default function ExampleTable({
 
   return (
     <>
-      <Label>Basic</Label>
+      <Subheading>Basic</Subheading>
       <Table>
         <TableHead>
           <TableRow>
@@ -133,7 +134,7 @@ export default function ExampleTable({
         </TableBody>
       </Table>
 
-      <Label>Responsive tables</Label>
+      <Subheading>Responsive tables</Subheading>
       <Table className="[--gutter:--spacing(6)] sm:[--gutter:--spacing(8)]">
         <TableHead>
           <TableRow>
@@ -157,7 +158,7 @@ export default function ExampleTable({
         </TableBody>
       </Table>
 
-      <Label>With condensed spacing</Label>
+      <Subheading>With condensed spacing</Subheading>
       <Table dense className="[--gutter:--spacing(6)] sm:[--gutter:--spacing(8)]">
         <TableHead>
           <TableRow>
@@ -187,7 +188,7 @@ export default function ExampleTable({
         </TableBody>
       </Table>
 
-      <Label>With striped rows</Label>
+      <Subheading>With striped rows</Subheading>
       <Table striped className="[--gutter:--spacing(6)] sm:[--gutter:--spacing(8)]">
         <TableHead>
           <TableRow>
@@ -207,7 +208,7 @@ export default function ExampleTable({
         </TableBody>
       </Table>
 
-      <Label>With complex content</Label>
+      <Subheading>With complex content</Subheading>
       <Table className="[--gutter:--spacing(6)] sm:[--gutter:--spacing(8)]">
         <TableHead>
           <TableRow>
@@ -241,7 +242,7 @@ export default function ExampleTable({
         </TableBody>
       </Table>
 
-      <Label>With pagination</Label>
+      <Subheading>With pagination</Subheading>
       <Table>
         <TableHead>
           <TableRow>
@@ -276,7 +277,7 @@ export default function ExampleTable({
         <PaginationNext href="?page=4" />
       </Pagination>
 
-      <label>With dropdowns</label>
+      <Subheading>With dropdowns</Subheading>
       <Table className="[--gutter:--spacing(6)] sm:[--gutter:--spacing(8)]">
         <TableHead>
           <TableRow>
@@ -313,7 +314,7 @@ export default function ExampleTable({
         </TableBody>
       </Table>
 
-      <Label>In dialog</Label>
+      <Subheading>In dialog</Subheading>
       <Button type="button" onClick={() => setIsOpen(true)}>
         Show users
       </Button>

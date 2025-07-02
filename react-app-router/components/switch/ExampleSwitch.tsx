@@ -3,18 +3,19 @@ import Label from "components/fieldset/Label";
 import SwitchField from "./SwitchField";
 import Switch from "./Switch";
 import SwitchGroup from "./SwitchGroup";
+import { Subheading } from "../heading";
 
 export default function ExampleSwitch() {
     return (
         <>
-            <Label>Switch Example</Label>
+            <Subheading>Switch Example</Subheading>
             <SwitchField>
                 <Label>Allow embedding</Label>
                 <Description>Allow others to embed your event details on their own site.</Description>
                 <Switch name="allow_embedding" defaultChecked />
             </SwitchField>
 
-            <Label>Multiple switches</Label>
+            <Subheading>Multiple switches</Subheading>
             <SwitchGroup>
                 <SwitchField>
                     <Label>Show on events page</Label>

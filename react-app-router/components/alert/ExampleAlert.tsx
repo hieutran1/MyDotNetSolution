@@ -7,13 +7,14 @@ import AlertActions from "./AlertActions";
 import AlertBody from "./AlertBody";
 import Input from "components/input/Input";
 import Label from "components/fieldset/Label";
+import { Subheading } from "../heading";
 
 export default function ExampleAlert() {
     let [isOpen, setIsOpen] = useState(false);
 
     return (
         <>
-            <Label>Alert Example</Label>
+            <Subheading>Alert Example</Subheading>
             <Button type="button" onClick={() => setIsOpen(true)}>
                 Refund payment
             </Button>
@@ -30,7 +31,7 @@ export default function ExampleAlert() {
                 </AlertActions>
             </Alert>
 
-            <Label>With body and auto focus</Label>
+            <Subheading>With body and auto focus</Subheading>
             <Button type="button" onClick={() => setIsOpen(true)}>
                 Delete repository
             </Button>

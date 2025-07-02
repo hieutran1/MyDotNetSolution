@@ -4,6 +4,7 @@ import Combobox from "./Combobox";
 import ComboboxOption from "./ComboboxOption";
 import ComboboxLabel from "./ComboboxLabel";
 import ComboboxDescription from "./ComboboxDescription";
+import { Subheading } from "../heading";
 
 export default function ExampleCombobox({
     currentUser,
@@ -18,7 +19,7 @@ export default function ExampleCombobox({
 }) {
     return (
         <>
-            <Label>Basic</Label>
+            <Subheading>Basic</Subheading>
             <Field>
                 <Label>Assigned to</Label>
                 <Combobox name="user" options={users} displayValue={(user: { name: string }) => user?.name} defaultValue={currentUser}>
@@ -30,7 +31,7 @@ export default function ExampleCombobox({
                 </Combobox>
             </Field>
 
-            <Label>With flags</Label>
+            <Subheading>With flags</Subheading>
             <Field>
                 <Label>Country</Label>
                 <Combobox
@@ -48,7 +49,7 @@ export default function ExampleCombobox({
                 </Combobox>
             </Field>
 
-            <Label>With secondary text</Label>
+            <Subheading>With secondary text</Subheading>
             <Field>
                 <Label>Assigned to</Label>
                 <Combobox name="user" options={users} displayValue={(user) => user?.name} defaultValue={currentUser}>

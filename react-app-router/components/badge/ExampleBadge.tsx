@@ -1,21 +1,22 @@
 import Label from "components/fieldset/Label";
 import Badge from "./Badge";
 import BadgeButton from "./BadgeButton";
+import { Subheading } from "../heading";
 
 export default function ExampleBadge() {
     return (
         <>
-            <Label>Badge colors</Label>
+            <Subheading>Badge colors</Subheading>
             <div className="flex gap-3">
                 <Badge color="lime">documentation</Badge>
                 <Badge color="purple">help wanted</Badge>
                 <Badge color="rose">bug</Badge>
             </div>
 
-            <Label>Using as buttons</Label>
+            <Subheading>Using as buttons</Subheading>
             <BadgeButton>documentation</BadgeButton>
 
-            <Label>Using as links</Label>
+            <Subheading>Using as links</Subheading>
             <BadgeButton href="#">documentation</BadgeButton>
         </>
     )

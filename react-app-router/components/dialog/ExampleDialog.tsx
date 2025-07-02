@@ -8,6 +8,7 @@ import Field from "components/fieldset/Field"
 import Label from "components/fieldset/Label"
 import Input from "components/input/Input"
 import DialogActions from "./DialogActions"
+import { Subheading } from "../heading"
 
 export default function ExampleDialog() {
     let [isOpen, setIsOpen] = useState(false);
@@ -15,7 +16,7 @@ export default function ExampleDialog() {
 
     return (
         <>
-            <Label>Basic dialog</Label>
+            <Subheading>Basic dialog</Subheading>
             <Button type="button" onClick={() => setIsOpen(true)}>
                 Refund payment
             </Button>
@@ -38,7 +39,7 @@ export default function ExampleDialog() {
                 </DialogActions>
             </Dialog>
 
-            <Label>With scrolling content</Label>
+            <Subheading>With scrolling content</Subheading>
             <Button type="button" onClick={() => setIsOpen(true)}>
                 Agree to terms
             </Button>
