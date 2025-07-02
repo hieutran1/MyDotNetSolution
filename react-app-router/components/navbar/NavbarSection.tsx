@@ -7,8 +7,8 @@ export default function NavbarSection({
 }) {
   return (
     <div
-      className={`flex items-center space-x-4 ${className}`}
-      role="navigation">
+      className={(className ? className + ' ' : '') + "flex items-center gap-3"}
+    >
       {children}
     </div>
   );

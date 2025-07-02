@@ -22,11 +22,11 @@ import {
 import { InboxIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 
 const navItems = [
-  { label: 'Home', url: '/' },
-  { label: 'Events', url: '/events' },
-  { label: 'Orders', url: '/orders' },
-  { label: 'Broadcasts', url: '/broadcasts' },
-  { label: 'Settings', url: '/settings' },
+  { label: 'Home', url: '/layouts/stacked', current: true },
+  { label: 'Events', url: '/layouts/stacked/events' },
+  { label: 'Orders', url: '/layouts/stacked/orders' },
+  { label: 'Broadcasts', url: '/layouts/stacked/broadcasts' },
+  { label: 'Settings', url: '/layouts/stacked/settings' },
 ]
 
 function TeamDropdownMenu() {
@@ -38,7 +38,7 @@ function TeamDropdownMenu() {
       </DropdownItem>
       <DropdownDivider />
       <DropdownItem href="/teams/1">
-        <Avatar slot="icon" src="/tailwind-logo.svg" />
+        <Avatar slot="icon" src="/asset/tailwind-logo.svg" />
         <DropdownLabel>Tailwind Labs</DropdownLabel>
       </DropdownItem>
       <DropdownItem href="/teams/2">
@@ -59,9 +59,9 @@ export default function ExampleStackedLayout({ children }: { children?: React.Re
     <StackedLayout
       navbar={
         <Navbar>
-          <Dropdown>
-            <DropdownButton as={NavbarItem} className="max-lg:hidden">
-              <Avatar src="/tailwind-logo.svg" />
+          <Dropdown className="max-lg:hidden">
+            <DropdownButton as={NavbarItem} >
+              <Avatar src="/asset/tailwind-logo.svg" />
               <NavbarLabel>Tailwind Labs</NavbarLabel>
               <ChevronDownIcon />
             </DropdownButton>
@@ -69,8 +69,8 @@ export default function ExampleStackedLayout({ children }: { children?: React.Re
           </Dropdown>
           <NavbarDivider className="max-lg:hidden" />
           <NavbarSection className="max-lg:hidden">
-            {navItems.map(({ label, url }) => (
-              <NavbarItem key={label} href={url}>
+            {navItems.map(({ label, url, current }) => (
+              <NavbarItem key={label} href={url} current={current}>
                 {label}
               </NavbarItem>
             ))}
@@ -85,7 +85,7 @@ export default function ExampleStackedLayout({ children }: { children?: React.Re
             </NavbarItem>
             <Dropdown>
               <DropdownButton as={NavbarItem}>
-                <Avatar src="/profile-photo.jpg" square />
+                <Avatar src="/asset/profile-photo.jpg" square />
               </DropdownButton>
               <DropdownMenu className="min-w-64" anchor="bottom end">
                 <DropdownItem href="/my-profile">
@@ -120,7 +120,7 @@ export default function ExampleStackedLayout({ children }: { children?: React.Re
           <SidebarHeader>
             <Dropdown>
               <DropdownButton as={SidebarItem} className="lg:mb-2.5">
-                <Avatar src="/tailwind-logo.svg" />
+                <Avatar src="/asset/tailwind-logo.svg" />
                 <SidebarLabel>Tailwind Labs</SidebarLabel>
                 <ChevronDownIcon />
               </DropdownButton>
@@ -129,8 +129,8 @@ export default function ExampleStackedLayout({ children }: { children?: React.Re
           </SidebarHeader>
           <SidebarBody>
             <SidebarSection>
-              {navItems.map(({ label, url }) => (
-                <SidebarItem key={label} href={url}>
+              {navItems.map(({ label, url, current }) => (
+                <SidebarItem key={label} href={url} current={current}>
                   {label}
                 </SidebarItem>
               ))}

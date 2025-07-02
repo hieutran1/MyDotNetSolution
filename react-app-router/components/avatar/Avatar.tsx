@@ -20,7 +20,7 @@ export default function Avatar({
           (
             <span
               data-slot='avatar'
-              className={className + ' inline-grid shrink-0 align-middle [--avatar-radius:20%] *:col-start-1 *:row-start-1 outline -outline-offset-1 outline-black/10 dark:outline-white/10 rounded-full *:rounded-full'}
+              className={(className ? className + ' ' : '') + 'inline-grid shrink-0 align-middle [--avatar-radius:20%] *:col-start-1 *:row-start-1 outline -outline-offset-1 outline-black/10 dark:outline-white/10 rounded-full *:rounded-full'}
             >
               <img className="size-full" src={src} alt="hel" />
             </span>
@@ -28,7 +28,7 @@ export default function Avatar({
           (
             <span
               data-slot='avatar'
-              className={className + " inline-grid shrink-0 align-middle [--avatar-radius:20%] *:col-start-1 *:row-start-1 outline -outline-offset-1 outline-black/10 dark:outline-white/10 rounded-full *:rounded-full"}
+              className={(className ? className + ' ' : '') + "inline-grid shrink-0 align-middle [--avatar-radius:20%] *:col-start-1 *:row-start-1 outline -outline-offset-1 outline-black/10 dark:outline-white/10 rounded-full *:rounded-full"}
             >
               <svg
                 className="size-full fill-current p-[5%] text-[48px] font-medium uppercase select-none"

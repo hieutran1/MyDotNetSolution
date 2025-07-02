@@ -4,8 +4,8 @@ export default function SidebarHeading({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col gap-2.5 px-3 pt-3 pb-2.5">
+    <h3 className="mb-1 px-2 text-xs/6 font-medium text-zinc-500 dark:text-zinc-400">
       {children}
-    </div>
+    </h3>
   );
 }

@@ -1,12 +1,7 @@
-export default function NavbarSpacer({
-  className = '',
-}: {
-  className?: string;
-}) {
+export default function NavbarSpacer() {
   return (
     <div
-      className={`flex-1 ${className}`}
-      role="presentation"
+      className="-ml-4 flex-1"
       aria-hidden="true"
     />
   );

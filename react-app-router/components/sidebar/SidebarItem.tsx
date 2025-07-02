@@ -11,6 +11,10 @@ export default function SidebarItem({
 }) {
   return (
     <span className="relative">
+      {current && <span
+        className="absolute inset-y-2 -left-4 w-0.5 rounded-full bg-zinc-950 dark:bg-white"
+        style={{ opacity: 1 }}></span>}
+
       <Button
         as="a"
         href={href}

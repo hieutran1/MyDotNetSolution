@@ -28,6 +28,8 @@ export default function Button({
       type={type}
       disabled={disabled}
       onClick={onClick}
-    >{children}</Headless.Button>
+    >
+      {children}
+    </Headless.Button>
   );
 }

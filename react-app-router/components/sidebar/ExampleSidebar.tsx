@@ -44,35 +44,33 @@ export default function ExampleSidebar() {
         <Sidebar>
           <SidebarHeader>
             <SidebarSection>
-              <span className='relative'>
-                <Dropdown>
-                  <DropdownButton as={SidebarItem} className="mb-2.5">
-                    <Avatar src="/asset/tailwind-logo.svg" />
-                    <SidebarLabel>Tailwind Labs</SidebarLabel>
-                    <ChevronDownIcon />
-                  </DropdownButton>
-                  <DropdownMenu className="min-w-80 lg:min-w-64 " anchor="bottom start">
-                    <DropdownItem href="/teams/1/settings">
-                      <Cog8ToothIcon />
-                      <DropdownLabel>Settings</DropdownLabel>
-                    </DropdownItem>
-                    <DropdownDivider />
-                    <DropdownItem href="/teams/1">
-                      <Avatar slot="icon" src="/asset/tailwind-logo.svg" />
-                      <DropdownLabel>Tailwind Labs</DropdownLabel>
-                    </DropdownItem>
-                    <DropdownItem href="/teams/2">
-                      <Avatar slot="icon" initials="WC" className="bg-purple-500 text-white" />
-                      <DropdownLabel>Workcation</DropdownLabel>
-                    </DropdownItem>
-                    <DropdownDivider />
-                    <DropdownItem href="/teams/create">
-                      <PlusIcon />
-                      <DropdownLabel>New team&hellip;</DropdownLabel>
-                    </DropdownItem>
-                  </DropdownMenu>
-                </Dropdown>
-              </span>
+              <Dropdown>
+                <DropdownButton as={SidebarItem} className="mb-2.5">
+                  <Avatar src="/asset/tailwind-logo.svg" />
+                  <SidebarLabel>Tailwind Labs</SidebarLabel>
+                  <ChevronDownIcon />
+                </DropdownButton>
+                <DropdownMenu className="min-w-80 lg:min-w-64 " anchor="bottom start">
+                  <DropdownItem href="/teams/1/settings">
+                    <Cog8ToothIcon />
+                    <DropdownLabel>Settings</DropdownLabel>
+                  </DropdownItem>
+                  <DropdownDivider />
+                  <DropdownItem href="/teams/1">
+                    <Avatar slot="icon" src="/asset/tailwind-logo.svg" />
+                    <DropdownLabel>Tailwind Labs</DropdownLabel>
+                  </DropdownItem>
+                  <DropdownItem href="/teams/2">
+                    <Avatar slot="icon" initials="WC" className="bg-purple-500 text-white" />
+                    <DropdownLabel>Workcation</DropdownLabel>
+                  </DropdownItem>
+                  <DropdownDivider />
+                  <DropdownItem href="/teams/create">
+                    <PlusIcon />
+                    <DropdownLabel>New team&hellip;</DropdownLabel>
+                  </DropdownItem>
+                </DropdownMenu>
+              </Dropdown>
             </SidebarSection>
 
             <SidebarSection className='max-lg:hidden'>

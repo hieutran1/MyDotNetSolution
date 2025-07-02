@@ -4,9 +4,6 @@ export default function NavbarDivider({
   className?: string;
 }) {
   return (
-    <div
-      className={`border-l border-gray-200 h-6 mx-2 ${className}`}
-      role="separator"
-    />
+    <div aria-hidden="true" className={(className ? className + ' ' : '') + "h-6 w-px bg-zinc-950/10 dark:bg-white/10"} />
   );
 }

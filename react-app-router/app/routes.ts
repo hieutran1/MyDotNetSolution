@@ -31,7 +31,9 @@ export default [
     route("components/heading", "../components/heading/ExampleHeading.tsx"),
     route("components/input", "../components/input/ExampleInput.tsx"),
     route("components/listbox", "../components/listbox/ExampleListbox.tsx"),
-    route("components/navbar", "../components/navbar/ExampleNavbar.tsx"),
+    
+    route("components/navbar", "../components/navbar/ExampleNavbar.tsx"), // todo
+
     route("components/pagination", "../components/pagination/ExamplePagination.tsx"),
     route("components/radio", "../components/radio/ExampleRadio.tsx"),
     route("components/select", "../components/select/ExampleSelect.tsx"),
