@@ -1,4 +1,4 @@
-import { Heading, Subheading } from "@/components/heading";
+import { Heading } from "@/components/heading";
 import { NavbarItem, type Navbar } from "@/components/navbar";
 import type { Sidebar } from "@/components/sidebar";
 import { Bars2Icon } from "@heroicons/react/20/solid";
@@ -29,16 +29,27 @@ export default function SidebarLayout({
                         <Bars2Icon></Bars2Icon>
                     </NavbarItem>
                     <Headless.Dialog
+                        // transition
+                        // className="transition duration-[1s] ease-in-out data-closed:opacity-0"
+
                         open={isOpen}
                         onClose={() => setIsOpen(false)}
                         className="lg:hidden"
                     >
                         <Headless.DialogBackdrop
-                            className="fixed inset-0 bg-black/30 transition data-closed:opacity-0 data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in"
-                        ></Headless.DialogBackdrop>
+                            transition={true}
+                            className={
+                                "fixed inset-0 bg-black/30" +
+                                " data-enter:duration-300 data-enter:ease-out data-leave:duration-200 data-leave:ease-in data-closed:opacity-0"
+                            }
+                        />
 
                         <Headless.DialogPanel
-                            className="fixed inset-y-0 w-full max-w-80 p-2 transition duration-300 ease-in-out data-closed:-translate-x-full"
+                            transition
+                            className={
+                                "fixed inset-y-0 w-full max-w-80 p-2" +
+                                " duration-600 ease-in-out data-closed:-translate-x-full"
+                            }
                         >
                             <div
                                 className="flex h-full flex-col rounded-lg bg-white shadow-xs ring-1 ring-zinc-950/5 dark:bg-zinc-900 dark:ring-white/10"
@@ -59,6 +70,7 @@ export default function SidebarLayout({
                             </div>
                         </Headless.DialogPanel>
                     </Headless.Dialog>
+
                 </div>
                 {navbar}
             </header>
