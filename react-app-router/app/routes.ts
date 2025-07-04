@@ -16,6 +16,7 @@ export default [
 
     layout("../layouts/sidebar-layout/ExampleSidebarLayout.tsx", [
         route("components/alert", "../components/alert/ExampleAlert.tsx"),
+        
         route("components/avatar", "../components/avatar/ExampleAvatar.tsx"),
         route("components/badge", "../components/badge/ExampleBadge.tsx"),
         // route("components/breadcrumb", "../components/breadcrumb/ExampleBreadcrumb.tsx"),
@@ -24,7 +25,7 @@ export default [
         route("components/combobox", "../components/combobox/ExampleCombobox.tsx"),
         route("components/description-list", "../components/description-list/ExampleDescriptionList.tsx"),
 
-        route("components/dialog", "../components/dialog/ExampleDialog.tsx"),
+        route("components/dialog", "../components/dialog/ExampleDialog.tsx"), //done
 
         route("components/divider", "../components/divider/ExampleDivider.tsx"),
 

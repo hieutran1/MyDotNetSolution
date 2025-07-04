@@ -6,9 +6,10 @@ export default function AlertDescription({
     children: React.ReactNode;
 }) {
     return (
-        // <div className="text-sm text-gray-500 dark:text-gray-400">
-        //   {children}
-        // </div>
-        <Description className="text-sm text-gray-500 dark:text-gray-400">{children}</Description>
+        <Description 
+            data-slot="text"
+            className="mt-2 text-center text-pretty sm:text-left text-base/6 text-zinc-500 sm:text-sm/6 dark:text-zinc-400">
+            {children}
+        </Description>
     );
 }

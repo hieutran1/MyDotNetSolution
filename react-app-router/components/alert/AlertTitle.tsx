@@ -6,9 +6,8 @@ export default function AlertTitle({
     children: React.ReactNode;
 }) {
     return (
-        // <div className="text-lg font-semibold text-gray-900 dark:text-gray-100">
-        //   {children}
-        // </div>
-        <DialogTitle className="text-lg font-semibold text-gray-900 dark:text-gray-100">{children}</DialogTitle>
+        <DialogTitle className="text-center text-base/6 font-semibold text-balance text-zinc-950 sm:text-left sm:text-sm/6 sm:text-wrap dark:text-white">
+            {children}
+        </DialogTitle>
     );
 }

@@ -11,6 +11,7 @@ import { Subheading } from "../heading";
 
 export default function ExampleAlert() {
     let [isOpen, setIsOpen] = useState(false);
+    let [isOpenWithAlertBody, setIsOpenWithAlertBody] = useState(false);
 
     return (
         <>
@@ -32,20 +33,20 @@ export default function ExampleAlert() {
             </Alert>
 
             <Subheading>With body and auto focus</Subheading>
-            <Button type="button" onClick={() => setIsOpen(true)}>
+            <Button type="button" onClick={() => setIsOpenWithAlertBody(true)}>
                 Delete repository
             </Button>
-            <Alert open={isOpen} onClose={setIsOpen} size="sm">
+            <Alert open={isOpenWithAlertBody} onClose={setIsOpenWithAlertBody} size="sm">
                 <AlertTitle>Verification required</AlertTitle>
                 <AlertDescription>To continue, please enter your password.</AlertDescription>
                 <AlertBody>
                     <Input autoFocus name="password" type="password" aria-label="Password" placeholder="•••••••" />
                 </AlertBody>
                 <AlertActions>
-                    <Button plain onClick={() => setIsOpen(false)}>
+                    <Button plain onClick={() => setIsOpenWithAlertBody(false)}>
                         Cancel
                     </Button>
-                    <Button onClick={() => setIsOpen(false)}>Continue</Button>
+                    <Button onClick={() => setIsOpenWithAlertBody(false)}>Continue</Button>
                 </AlertActions>
             </Alert>
         </>

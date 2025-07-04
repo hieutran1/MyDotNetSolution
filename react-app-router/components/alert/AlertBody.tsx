@@ -4,7 +4,7 @@ export default function AlertBody({
     children: React.ReactNode;
 }) {
     return (
-        <div className="text-sm text-gray-500 dark:text-gray-400">
+        <div className="mt-4">
             {children}
         </div>
     );
