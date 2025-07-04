@@ -4,10 +4,7 @@ export default function DialogActions({
     children: React.ReactNode;
 }) {
     return (
-        <div
-            className="flex flex-row-reverse gap-2 px-4 py-3 sm:px-6"
-            data-testid="dialog-actions"
-        >
+        <div className="mt-8 flex flex-col-reverse items-center justify-end gap-3 *:w-full sm:flex-row sm:*:w-auto">
             {children}
         </div>
     );

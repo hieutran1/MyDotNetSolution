@@ -1,4 +1,4 @@
-import { DialogTitle as DialogTitleH } from "@headlessui/react";
+import * as Headless from "@headlessui/react";
 
 export default function DialogTitle({
     children,
@@ -6,12 +6,11 @@ export default function DialogTitle({
     children: React.ReactNode;
 }) {
     return (
-        <DialogTitleH
-            as="h3"
-            className="text-lg font-medium leading-6 text-gray-900 dark:text-gray-100"
-            data-testid="dialog-title"
+        <Headless.DialogTitle
+            as="h2"
+            className="text-lg/6 font-semibold text-balance text-zinc-950 sm:text-base/6 dark:text-white"
         >
             {children}
-        </DialogTitleH>
+        </Headless.DialogTitle>
     );
 }

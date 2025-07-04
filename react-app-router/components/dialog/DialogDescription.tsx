@@ -8,8 +8,7 @@ export default function DialogDescription({
     return (
         <Description
             as="p"
-            className="text-sm text-gray-500 dark:text-gray-400"
-            data-testid="dialog-description"
+            className="mt-2 text-pretty text-base/6 text-zinc-500 sm:text-sm/6 dark:text-zinc-400"
         >
             {children}
         </Description>

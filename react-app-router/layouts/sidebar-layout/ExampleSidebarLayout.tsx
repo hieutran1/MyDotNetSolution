@@ -46,6 +46,7 @@ import {
     Square2StackIcon,
     TicketIcon,
 } from '@heroicons/react/20/solid'
+import { Outlet } from 'react-router';
 
 export default function ExampleSidebarLayout({ children }: { children?: React.ReactNode }) {
     return (
@@ -126,11 +127,11 @@ export default function ExampleSidebarLayout({ children }: { children?: React.Re
                         </SidebarSection>
 
                         <SidebarSection className="max-lg:hidden">
-                            <SidebarItem href="/search">
+                            <SidebarItem href="/layouts/sidebar/search">
                                 <MagnifyingGlassIcon />
                                 <SidebarLabel>Search</SidebarLabel>
                             </SidebarItem>
-                            <SidebarItem href="/inbox">
+                            <SidebarItem href="/layouts/sidebar/inbox">
                                 <InboxIcon />
                                 <SidebarLabel>Inbox</SidebarLabel>
                             </SidebarItem>
@@ -138,23 +139,23 @@ export default function ExampleSidebarLayout({ children }: { children?: React.Re
                     </SidebarHeader>
                     <SidebarBody>
                         <SidebarSection>
-                            <SidebarItem href="/">
+                            <SidebarItem href="/layouts/sidebar/">
                                 <HomeIcon />
                                 <SidebarLabel>Home</SidebarLabel>
                             </SidebarItem>
-                            <SidebarItem href="/events">
+                            <SidebarItem href="/layouts/sidebar/events">
                                 <Square2StackIcon />
                                 <SidebarLabel>Events</SidebarLabel>
                             </SidebarItem>
-                            <SidebarItem href="/orders">
+                            <SidebarItem href="/layouts/sidebar/orders">
                                 <TicketIcon />
                                 <SidebarLabel>Orders</SidebarLabel>
                             </SidebarItem>
-                            <SidebarItem href="/settings">
+                            <SidebarItem href="/layouts/sidebar/settings">
                                 <Cog6ToothIcon />
                                 <SidebarLabel>Settings</SidebarLabel>
                             </SidebarItem>
-                            <SidebarItem href="/broadcasts">
+                            <SidebarItem href="/layouts/sidebar/broadcasts">
                                 <MegaphoneIcon />
                                 <SidebarLabel>Broadcasts</SidebarLabel>
                             </SidebarItem>
@@ -222,6 +223,7 @@ export default function ExampleSidebarLayout({ children }: { children?: React.Re
             }
         >
             {children}
+            <Outlet />
         </SidebarLayout>
     )
 }

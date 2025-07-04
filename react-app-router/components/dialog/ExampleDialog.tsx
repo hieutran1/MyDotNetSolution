@@ -40,7 +40,7 @@ export default function ExampleDialog() {
             </Dialog>
 
             <Subheading>With scrolling content</Subheading>
-            <Button type="button" onClick={() => setIsOpen(true)}>
+            <Button type="button" onClick={() => setIsOpenDialogWithScrollingContent(true)}>
                 Agree to terms
             </Button>
             <Dialog open={isOpenDialogWithScrollingContent} onClose={setIsOpenDialogWithScrollingContent} size="xl">
