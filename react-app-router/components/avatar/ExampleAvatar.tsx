@@ -1,5 +1,4 @@
-import Label from "components/fieldset/Label";
-import { Avatar } from "./Avatar";
+import Avatar from "./Avatar";
 import { Subheading } from "../heading";
 
 const USERS = [
@@ -10,7 +9,7 @@ const USERS = [
 ];
 
 export default function AvatarExample({
-    user,
+    user = USERS[0],
     users = USERS
 }: {
     user: {
@@ -23,14 +22,18 @@ export default function AvatarExample({
     return (
         <>
             <Subheading>Basic</Subheading>
-            <Avatar className="size-6" src={user.avatarUrl} />
-            <Avatar className="size-8" src={user.avatarUrl} />
-            <Avatar className="size-10" src={user.avatarUrl} />
+            <div className="flex items-end gap-8">
+                <Avatar className="size-6" src={user.avatarUrl} />
+                <Avatar className="size-8" src={user.avatarUrl} />
+                <Avatar className="size-10" src={user.avatarUrl} />
+            </div>
 
             <Subheading>With initials</Subheading>
-            <Avatar initials="tw" className="size-6 bg-zinc-900 text-white dark:bg-white dark:text-black" />
-            <Avatar initials="tw" className="size-8 bg-zinc-900 text-white dark:bg-white dark:text-black" />
-            <Avatar initials="tw" className="size-10 bg-zinc-900 text-white dark:bg-white dark:text-black" />
+            <div className="flex items-end gap-8">
+                <Avatar initials="tw" className="size-6 bg-zinc-900 text-white dark:bg-white dark:text-black" />
+                <Avatar initials="tw" className="size-8 bg-zinc-900 text-white dark:bg-white dark:text-black" />
+                <Avatar initials="tw" className="size-10 bg-zinc-900 text-white dark:bg-white dark:text-black" />
+            </div>
 
             <Subheading>Avatar groups</Subheading>
             <div className="flex items-center justify-center -space-x-2">
