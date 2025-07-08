@@ -1,19 +1,21 @@
+import { ArrowLongRightIcon } from "@heroicons/react/16/solid";
+import { Button } from "../button";
 
 export function PaginationNext({
     href,
     children = 'Next'
 }: {
-    href: string;
+    href?: string;
     children?: React.ReactNode;
 }) {
     return (
-        <span>
-            <a
-                className="flex items-center justify-center px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-r-md hover:bg-gray-50"
-                href={href}
+        <span className="flex grow basis-0 justify-end">
+            <Button plain aria_label="Next page"
+                disabled={href ? false : true}
             >
                 {children}
-            </a>
+                <ArrowLongRightIcon />
+            </Button>
         </span>
     );
 }

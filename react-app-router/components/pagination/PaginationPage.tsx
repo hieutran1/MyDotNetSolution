@@ -1,22 +1,29 @@
+import { Button } from "../button";
+
 export default function PaginationPage({
     href,
     children,
-    current = false
+    current
 }: {
-    href: string;
+    href?: string;
     children: React.ReactNode;
     current?: boolean;
 }) {
     return (
-        <a
-            className={`flex items-center justify-center px-3 py-2 text-sm font-medium ${
-                current
-                    ? 'text-blue-600 bg-blue-50 border-blue-500'
-                    : 'text-gray-500 bg-white border-gray-300 hover:bg-gray-50'
-            } border rounded-md`}
+        <Button plain
+            className={
+                "min-w-9 before:absolute before:-inset-px before:rounded-lg" +
+                (current ? " before:bg-zinc-950/5 dark:before:bg-white/10" : "")
+            }
             href={href}
+            aria_label={`Page ${children}`}
+            aria_current={current ? "page" : undefined}
+            disabled={href ? false : true}
+
         >
-            {children}
-        </a>
+            <span className="-mx-0.5">
+                {children}
+            </span>
+        </Button>
     );
 }

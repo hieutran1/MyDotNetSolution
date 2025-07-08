@@ -42,7 +42,7 @@ const PLAYERS = [
 
 const USERS = [
   {
-    handle: '4',
+    handle: 'bobbrown',
     name: 'Bob Brown',
     email: 'bob.brown@example.com',
     access: 'Owner',
@@ -51,7 +51,7 @@ const USERS = [
     online: true,
   },
   {
-    handle: '5',
+    handle: 'charliewhite',
     name: 'Charlie White',
     email: 'charlie.white@example.com',
     access: 'Admin',
@@ -60,7 +60,7 @@ const USERS = [
     online: false,
   },
   {
-    handle: '1',
+    handle: 'johndoe',
     name: 'John Doe',
     email: 'john.doe@example.com',
     access: 'Admin',
@@ -69,7 +69,7 @@ const USERS = [
     online: true,
   },
   {
-    handle: '2',
+    handle: 'janesmith',
     name: 'Jane Smith',
     email: 'jane.smith@examle.com',
     access: 'User',
@@ -78,7 +78,7 @@ const USERS = [
     online: false,
   },
   {
-    handle: '3',
+    handle: 'alicejohnson',
     name: 'Alice Johnson',
     email: 'alice.johnson@example.com',
     access: 'Guest',
@@ -87,7 +87,7 @@ const USERS = [
     online: true,
   },
   {
-    handle: '6',
+    handle: 'dianagreen',
     name: 'Diana Green',
     email: 'diana.green@example.com',
     access: 'User',
@@ -96,7 +96,7 @@ const USERS = [
     online: false,
   },
   {
-    handle: '7',
+    handle: 'ethanblue',
     name: 'Ethan Blue',
     email: 'ethan.blue@example.com',
     access: 'Guest',
@@ -120,7 +120,7 @@ export default function ExampleTable({
           <TableRow>
             <TableHeader>Name</TableHeader>
             <TableHeader>Email</TableHeader>
-            <TableHeader>Role</TableHeader>
+            <TableHeader>Access</TableHeader>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -135,28 +135,30 @@ export default function ExampleTable({
       </Table>
 
       <Subheading>Responsive tables</Subheading>
-      <Table className="[--gutter:--spacing(6)] sm:[--gutter:--spacing(8)]">
-        <TableHead>
-          <TableRow>
-            <TableHeader>Name</TableHeader>
-            <TableHeader>Handle</TableHeader>
-            <TableHeader>Role</TableHeader>
-            <TableHeader>Email</TableHeader>
-            <TableHeader>Access</TableHeader>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {users.map((user) => (
-            <TableRow key={user.handle}>
-              <TableCell className="font-medium">{user.name}</TableCell>
-              <TableCell>@{user.handle}</TableCell>
-              <TableCell>{user.role}</TableCell>
-              <TableCell>{user.email}</TableCell>
-              <TableCell className="text-zinc-500">{user.access}</TableCell>
+      <div className='mx-auto max-w-xl'>
+        <Table className="[--gutter:--spacing(6)] sm:[--gutter:--spacing(8)]">
+          <TableHead>
+            <TableRow>
+              <TableHeader>Name</TableHeader>
+              <TableHeader>Handle</TableHeader>
+              <TableHeader>Role</TableHeader>
+              <TableHeader>Email</TableHeader>
+              <TableHeader>Access</TableHeader>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHead>
+          <TableBody>
+            {users.map((user) => (
+              <TableRow key={user.handle}>
+                <TableCell className="font-medium">{user.name}</TableCell>
+                <TableCell>@{user.handle}</TableCell>
+                <TableCell>{user.role}</TableCell>
+                <TableCell>{user.email}</TableCell>
+                <TableCell className="text-zinc-500">{user.access}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
 
       <Subheading>With condensed spacing</Subheading>
       <Table dense className="[--gutter:--spacing(6)] sm:[--gutter:--spacing(8)]">
@@ -199,7 +201,7 @@ export default function ExampleTable({
         </TableHead>
         <TableBody>
           {users.map((user) => (
-            <TableRow key={user.handle}>
+            <TableRow key={user.handle} striped>
               <TableCell className="font-medium">{user.name}</TableCell>
               <TableCell>{user.email}</TableCell>
               <TableCell className="text-zinc-500">{user.access}</TableCell>
@@ -243,39 +245,44 @@ export default function ExampleTable({
       </Table>
 
       <Subheading>With pagination</Subheading>
-      <Table>
-        <TableHead>
-          <TableRow>
-            <TableHeader>Name</TableHeader>
-            <TableHeader>Email</TableHeader>
-            <TableHeader>Access</TableHeader>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {users.map((user) => (
-            <TableRow key={user.handle}>
-              <TableCell className="font-medium">{user.name}</TableCell>
-              <TableCell>{user.email}</TableCell>
-              <TableCell className="text-zinc-500">{user.access}</TableCell>
+      <div className='w-full'>
+        <Table>
+          <TableHead>
+            <TableRow>
+              <TableHeader>Name</TableHeader>
+              <TableHeader>Email</TableHeader>
+              <TableHeader>Access</TableHeader>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-      <Pagination className="mt-6">
-        <PaginationPrevious href="?page=2" />
-        <PaginationList>
-          <PaginationPage href="?page=1">1</PaginationPage>
-          <PaginationPage href="?page=2">2</PaginationPage>
-          <PaginationPage href="?page=3" current>
-            3
-          </PaginationPage>
-          <PaginationPage href="?page=4">4</PaginationPage>
-          <PaginationGap />
-          <PaginationPage href="?page=65">65</PaginationPage>
-          <PaginationPage href="?page=66">66</PaginationPage>
-        </PaginationList>
-        <PaginationNext href="?page=4" />
-      </Pagination>
+          </TableHead>
+          <TableBody>
+            {users.map((user) => (
+              <TableRow key={user.handle}>
+                <TableCell className="font-medium">{user.name}</TableCell>
+                <TableCell>{user.email}</TableCell>
+                <TableCell className="text-zinc-500">{user.access}</TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+        <Pagination className="mt-6">
+          <PaginationPrevious href="?page=2" />
+          <PaginationList>
+            <PaginationPage href="?page=1">1</PaginationPage>
+            <PaginationPage href="?page=2">2</PaginationPage>
+            <PaginationPage href="?page=3" current>
+              3
+            </PaginationPage>
+            <PaginationPage href="?page=4">4</PaginationPage>
+            <PaginationGap />
+            <PaginationPage href="?page=65">65</PaginationPage>
+            <PaginationPage href="?page=66">66</PaginationPage>
+            <PaginationPage href="?page=66">66</PaginationPage>
+            <PaginationPage href="?page=66">66</PaginationPage>
+            <PaginationPage href="?page=66">66</PaginationPage>
+          </PaginationList>
+          <PaginationNext href="?page=4" />
+        </Pagination>
+      </div>
 
       <Subheading>With dropdowns</Subheading>
       <Table className="[--gutter:--spacing(6)] sm:[--gutter:--spacing(8)]">
@@ -318,24 +325,24 @@ export default function ExampleTable({
       <Button type="button" onClick={() => setIsOpen(true)}>
         Show users
       </Button>
-      <Dialog open={isOpen} onClose={setIsOpen} size="3xl">
+      <Dialog open={isOpen} onClose={setIsOpen} size="2xl">
         <DialogTitle>Users</DialogTitle>
         <DialogDescription>The follow users have access to your account.</DialogDescription>
         <DialogBody>
           <Table bleed compact>
             <TableHead>
               <TableRow>
-                <TableHeader>Name</TableHeader>
-                <TableHeader>Email</TableHeader>
-                <TableHeader>Role</TableHeader>
+                <TableHeader bleed>Name</TableHeader>
+                <TableHeader bleed>Email</TableHeader>
+                <TableHeader bleed>Role</TableHeader>
               </TableRow>
             </TableHead>
             <TableBody>
               {users.map((user) => (
                 <TableRow key={user.handle}>
-                  <TableCell className="font-medium">{user.name}</TableCell>
-                  <TableCell>{user.email}</TableCell>
-                  <TableCell className="text-zinc-500">{user.access}</TableCell>
+                  <TableCell className="font-medium" bleed>{user.name}</TableCell>
+                  <TableCell bleed>{user.email}</TableCell>
+                  <TableCell className="text-zinc-500" bleed>{user.access}</TableCell>
                 </TableRow>
               ))}
             </TableBody>

@@ -1,10 +1,10 @@
 export function PaginationGap() {
   return (
-    <li>
-      <span className="flex items-center px-3 py-2 text-sm font-medium text-gray-500 bg-white border border-gray-300">
-        ...
-      </span>
-    </li>
+    <span
+      aria-hidden="true"
+      className="w-9 text-center text-sm/6 font-semibold text-zinc-950 select-none dark:text-white">
+      ...
+    </span>
   );
 }
 

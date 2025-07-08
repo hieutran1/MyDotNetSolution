@@ -8,7 +8,7 @@ import PaginationPrevious from "./PaginationPrevious";
 export default function ExamplePagination() {
   return (
     <Pagination>
-      <PaginationPrevious href="?page=2" />
+      <PaginationPrevious  />
       <PaginationList>
         <PaginationPage href="?page=1">1</PaginationPage>
         <PaginationPage href="?page=2">2</PaginationPage>
@@ -18,7 +18,7 @@ export default function ExamplePagination() {
         <PaginationPage href="?page=4">4</PaginationPage>
         <PaginationGap />
         <PaginationPage href="?page=65">65</PaginationPage>
-        <PaginationPage href="?page=66">66</PaginationPage>
+        <PaginationPage >66</PaginationPage>
       </PaginationList>
       <PaginationNext href="?page=4" />
     </Pagination>

@@ -15,9 +15,9 @@ export default [
     route("auth/forgot-password", "../layouts/auth-layout/pages/ForgotPasswordPage.tsx"),
 
     layout("../layouts/sidebar-layout/ExampleSidebarLayout.tsx", [
-        route("components/alert", "../components/alert/ExampleAlert.tsx"),
-        
-        route("components/avatar", "../components/avatar/ExampleAvatar.tsx"),
+        route("components/alert", "../components/alert/ExampleAlert.tsx"), //done
+        route("components/avatar", "../components/avatar/ExampleAvatar.tsx"), //done
+
         route("components/badge", "../components/badge/ExampleBadge.tsx"),
         // route("components/breadcrumb", "../components/breadcrumb/ExampleBreadcrumb.tsx"),
         route("components/button", "../components/button/ExampleButton.tsx"),
@@ -27,7 +27,7 @@ export default [
 
         route("components/dialog", "../components/dialog/ExampleDialog.tsx"), //done
 
-        route("components/divider", "../components/divider/ExampleDivider.tsx"),
+        route("components/divider", "../components/divider/ExampleDivider.tsx"), //done
 
         route("components/dropdown", "../components/dropdown/ExampleDropdown.tsx"), //done
         route("components/fieldset", "../components/fieldset/ExampleFieldset.tsx"), //done
@@ -38,18 +38,18 @@ export default [
 
         route("components/navbar", "../components/navbar/ExampleNavbar.tsx"), // todo
 
-        route("components/pagination", "../components/pagination/ExamplePagination.tsx"),
+        route("components/pagination", "../components/pagination/ExamplePagination.tsx"), //done
         route("components/radio", "../components/radio/ExampleRadio.tsx"),
         route("components/select", "../components/select/ExampleSelect.tsx"),
 
         route("components/sidebar", "../components/sidebar/ExampleSidebar.tsx"), //done
 
         route("components/switch", "../components/switch/ExampleSwitch.tsx"),
-        route("components/table", "../components/table/ExampleTable.tsx"),
+        
+        route("components/table", "../components/table/ExampleTable.tsx"), //done
+
         route("components/text", "../components/text/ExampleText.tsx"),
         route("components/textarea", "../components/textarea/ExampleTextarea.tsx"),
-
-        // route("components/*", "../components/.tsx"),
     ]),
 
 ] satisfies RouteConfig;

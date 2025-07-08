@@ -6,8 +6,7 @@ export function PaginationList({
   className?: string;
 }) {
   return (
-    <span
-      className={`inline-flex -space-x-px rounded-md shadow-sm ${className}`}>
+    <span className="hidden items-baseline gap-x-2 sm:flex">
         {children}
     </span>
   );

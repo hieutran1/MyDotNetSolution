@@ -4,7 +4,7 @@ export default function TableHead({
     children?: React.ReactNode;
 }) {
     return (
-        <thead className="bg-zinc-100 dark:bg-zinc-800">
+        <thead className="text-zinc-500 dark:text-zinc-400">
             {children}
         </thead>
     );
