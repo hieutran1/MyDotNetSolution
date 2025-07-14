@@ -1,7 +1,5 @@
 import Fieldset from "components/fieldset/Fieldset";
-import Checkbox from "./Checkbox";
-import CheckboxField from "./CheckboxField";
-import CheckboxGroup from "./CheckboxGroup";
+import { Checkbox, CheckboxField, CheckboxGroup } from "@/components/checkbox";
 import Legend from "components/fieldset/Legend";
 import Label from "components/fieldset/Label";
 import Text from "components/text/Text";

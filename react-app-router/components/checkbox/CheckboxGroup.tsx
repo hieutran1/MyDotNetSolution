@@ -5,8 +5,8 @@ export default function CheckboxGroup({
 }) {
   return (
     <div
-      className="checkbox-group"
-      role="group"
+      className="space-y-3 has-data-[slot=description]:space-y-6 has-data-[slot=description]:**:data-[slot=label]:font-medium"
+      data-slot="control"
     >
       {children}
     </div>

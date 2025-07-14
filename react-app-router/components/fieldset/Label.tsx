@@ -7,7 +7,6 @@ export default function Label({
 }) {
     return (
         <Headless.Label
-            as="label"
             data-slot="label"
             className="text-base/6 text-zinc-950 select-none data-disabled:opacity-50 sm:text-sm/6 dark:text-white">
             {children}

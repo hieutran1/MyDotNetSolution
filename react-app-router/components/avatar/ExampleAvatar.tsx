@@ -1,5 +1,5 @@
-import Avatar from "./Avatar";
 import { Subheading } from "../heading";
+import Avatar from "./Avatar";
 
 const USERS = [
     { avatarUrl: "https://i.pravatar.cc/150?img=1" },
@@ -8,7 +8,7 @@ const USERS = [
     { avatarUrl: "https://i.pravatar.cc/150?img=4" },
 ];
 
-export default function AvatarExample({
+export default function ExampleAvatar({
     user = USERS[0],
     users = USERS
 }: {
@@ -38,7 +38,7 @@ export default function AvatarExample({
             <Subheading>Avatar groups</Subheading>
             <div className="flex items-center justify-center -space-x-2">
                 {users.map((user) => (
-                    <Avatar src={user.avatarUrl} className="size-8 ring-2 ring-white dark:ring-zinc-900" />
+                    <Avatar key={user.avatarUrl} src={user.avatarUrl} className="size-8 ring-2 ring-white dark:ring-zinc-900" />
                 ))}
             </div>
         </>

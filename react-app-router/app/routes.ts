@@ -18,9 +18,9 @@ export default [
         route("components/alert", "../components/alert/ExampleAlert.tsx"), //done
         route("components/avatar", "../components/avatar/ExampleAvatar.tsx"), //done
 
-        route("components/badge", "../components/badge/ExampleBadge.tsx"),
-        // route("components/breadcrumb", "../components/breadcrumb/ExampleBreadcrumb.tsx"),
-        route("components/button", "../components/button/ExampleButton.tsx"),
+        route("components/badge", "../components/badge/ExampleBadge.tsx"), //done
+        
+        route("components/button", "../components/button/ExampleButton.tsx"), // done partial
         route("components/checkbox", "../components/checkbox/ExampleCheckbox.tsx"),
         
         route("components/combobox", "../components/combobox/ExampleCombobox.tsx"), // done
@@ -38,7 +38,7 @@ export default [
         route("components/input", "../components/input/ExampleInput.tsx"),
         route("components/listbox", "../components/listbox/ExampleListbox.tsx"),
 
-        route("components/navbar", "../components/navbar/ExampleNavbar.tsx"), // todo
+        route("components/navbar", "../components/navbar/ExampleNavbar.tsx"), // done
 
         route("components/pagination", "../components/pagination/ExamplePagination.tsx"), //done
         route("components/radio", "../components/radio/ExampleRadio.tsx"),
