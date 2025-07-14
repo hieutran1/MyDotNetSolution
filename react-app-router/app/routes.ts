@@ -22,7 +22,9 @@ export default [
         // route("components/breadcrumb", "../components/breadcrumb/ExampleBreadcrumb.tsx"),
         route("components/button", "../components/button/ExampleButton.tsx"),
         route("components/checkbox", "../components/checkbox/ExampleCheckbox.tsx"),
-        route("components/combobox", "../components/combobox/ExampleCombobox.tsx"),
+        
+        route("components/combobox", "../components/combobox/ExampleCombobox.tsx"), // done
+
         route("components/description-list", "../components/description-list/ExampleDescriptionList.tsx"),
 
         route("components/dialog", "../components/dialog/ExampleDialog.tsx"), //done

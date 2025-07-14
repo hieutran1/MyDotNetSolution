@@ -1,7 +1,18 @@
-export default function Flag({ children }: { children: React.ReactNode }) {
+import Flag from 'react-flagpack';
+
+export default function FlagC({
+    children,
+    className,
+    code
+}: {
+    children?: React.ReactNode,
+    className?: string,
+    code?: string
+}) {
     return (
-        <span className="inline-flex items-center justify-center px-2 py-1 text-xs font-semibold leading-none text-white bg-red-500 rounded-full">
-            {children}
-        </span>
+        // <Flag code={code} className='w-5 sm:w-4' />
+        <svg viewBox='0 0 16 12' className='w-5 sm:w-4' fill='none' width={16} height={12}>
+            <use xlinkHref={`/flags/s/${code}.svg`}></use>
+        </svg>
     );
 }

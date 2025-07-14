@@ -35,7 +35,7 @@ export default function Avatar({
                 viewBox="0 0 100 100"
                 aria-hidden="true"
               >
-                <text x="50%" y="50%" alignment-baseline="middle" dominant-baseline="middle" text-anchor="middle" dy=".125em">
+                <text x="50%" y="50%" alignmentBaseline="middle" dominantBaseline="middle" textAnchor="middle" dy=".125em">
                   {initials}
                 </text>
               </svg>
