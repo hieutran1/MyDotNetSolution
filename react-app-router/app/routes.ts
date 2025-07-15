@@ -19,13 +19,13 @@ export default [
         route("components/avatar", "../components/avatar/ExampleAvatar.tsx"), //done
 
         route("components/badge", "../components/badge/ExampleBadge.tsx"), //done
-        
+
         route("components/button", "../components/button/ExampleButton.tsx"), // done partial
-        route("components/checkbox", "../components/checkbox/ExampleCheckbox.tsx"),
-        
+        route("components/checkbox", "../components/checkbox/ExampleCheckbox.tsx"), //done
+
         route("components/combobox", "../components/combobox/ExampleCombobox.tsx"), // done
 
-        route("components/description-list", "../components/description-list/ExampleDescriptionList.tsx"),
+        route("components/description-list", "../components/description-list/ExampleDescriptionList.tsx"), //done
 
         route("components/dialog", "../components/dialog/ExampleDialog.tsx"), //done
 
@@ -47,7 +47,7 @@ export default [
         route("components/sidebar", "../components/sidebar/ExampleSidebar.tsx"), //done
 
         route("components/switch", "../components/switch/ExampleSwitch.tsx"),
-        
+
         route("components/table", "../components/table/ExampleTable.tsx"), //done
 
         route("components/text", "../components/text/ExampleText.tsx"),

@@ -5,8 +5,7 @@ export default function DescriptionDetails({
 }) {
     return (
         <dd
-            className="mt-1 text-sm text-gray-900 dark:text-gray-100"
-            data-testid="description-details"
+            className="pt-1 pb-3 text-zinc-950 sm:border-t sm:border-zinc-950/5 sm:py-3 sm:nth-2:border-none dark:text-white dark:sm:border-white/5"
         >
             {children}
         </dd>
