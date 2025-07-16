@@ -34,8 +34,8 @@ export default [
         route("components/dropdown", "../components/dropdown/ExampleDropdown.tsx"), //done
         route("components/fieldset", "../components/fieldset/ExampleFieldset.tsx"), //done
 
-        route("components/heading", "../components/heading/ExampleHeading.tsx"),
-        route("components/input", "../components/input/ExampleInput.tsx"),
+        route("components/heading", "../components/heading/ExampleHeading.tsx"), //done
+        route("components/input", "../components/input/ExampleInput.tsx"), //done
         route("components/listbox", "../components/listbox/ExampleListbox.tsx"),
 
         route("components/navbar", "../components/navbar/ExampleNavbar.tsx"), // done
