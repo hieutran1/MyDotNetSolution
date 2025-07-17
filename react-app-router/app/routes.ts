@@ -36,7 +36,7 @@ export default [
 
         route("components/heading", "../components/heading/ExampleHeading.tsx"), //done
         route("components/input", "../components/input/ExampleInput.tsx"), //done
-        route("components/listbox", "../components/listbox/ExampleListbox.tsx"),
+        route("components/listbox", "../components/listbox/ExampleListbox.tsx"), //done
 
         route("components/navbar", "../components/navbar/ExampleNavbar.tsx"), // done
 

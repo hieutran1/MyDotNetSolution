@@ -1,5 +1,6 @@
 export const USERS = [
     {
+        id: 1,
         handle: 'bobbrown',
         name: 'Bob Brown',
         email: 'bob.brown@example.com',
@@ -10,6 +11,7 @@ export const USERS = [
         initials: '',
     },
     {
+        id: 2,
         handle: 'charliewhite',
         name: 'Charlie White',
         email: 'charlie.white@example.com',
@@ -20,6 +22,7 @@ export const USERS = [
         initials: '',
     },
     {
+        id: 3,
         handle: 'johndoe',
         name: 'John Doe',
         email: 'john.doe@example.com',
@@ -30,6 +33,7 @@ export const USERS = [
         initials: 'jd',
     },
     {
+        id: 4,
         handle: 'janesmith',
         name: 'Jane Smith',
         email: 'jane.smith@examle.com',
@@ -40,6 +44,7 @@ export const USERS = [
         initials: 'js',
     },
     {
+        id: 5,
         handle: 'alicejohnson',
         name: 'Alice Johnson',
         email: 'alice.johnson@example.com',
@@ -50,6 +55,7 @@ export const USERS = [
         initials: 'aj',
     },
     {
+        id: 6,
         handle: 'dianagreen',
         name: 'Diana Green',
         email: 'diana.green@example.com',
@@ -60,6 +66,7 @@ export const USERS = [
         initials: '',
     },
     {
+        id: 7,
         handle: 'ethanblue',
         name: 'Ethan Blue',
         email: 'ethan.blue@example.com',

@@ -4,7 +4,7 @@ export default function ListboxLabel({
     children: React.ReactNode;
 }) {
     return (
-        <span className="block truncate text-sm text-gray-900">
+        <span className="ml-2.5 truncate first:ml-0 sm:ml-2 sm:first:ml-0">
             {children}
         </span>
     );
