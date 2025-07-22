@@ -4,8 +4,10 @@ export default function SwitchGroup({
   children?: React.ReactNode;
 }) {
   return (
-    <div className="flex flex-col gap-2">
-        {children}
+    <div
+      data-slot="control"
+      className="space-y-3 **:data-[slot=label]:font-normal has-data-[slot=description]:space-y-6 has-data-[slot=description]:**:data-[slot=label]:font-medium">
+      {children}
     </div>
   );
 }

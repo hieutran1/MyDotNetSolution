@@ -4,7 +4,7 @@ export default function Code({
     children: React.ReactNode;
 }) {
     return (
-        <code className="rounded bg-gray-100 px-1.5 py-0.5 text-sm font-mono text-gray-800 dark:bg-gray-800 dark:text-gray-200">
+        <code className="rounded-sm border border-zinc-950/10 bg-zinc-950/2.5 px-0.5 text-sm font-medium text-zinc-950 sm:text-[0.8125rem] dark:border-white/20 dark:bg-white/5 dark:text-white">
             {children}
         </code>
     );

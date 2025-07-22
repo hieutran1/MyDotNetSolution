@@ -4,7 +4,7 @@ export default function Strong({
     children: React.ReactNode;
 }) {
     return (
-        <strong className="font-semibold text-gray-900 dark:text-gray-100">
+        <strong className="font-medium text-zinc-950 dark:text-white">
             {children}
         </strong>
     );

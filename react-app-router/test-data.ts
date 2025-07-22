@@ -96,3 +96,10 @@ export const COUNTRIES = [
     { code: 'US', name: 'United States' },
     { code: 'MX', name: 'Mexico' }
 ]
+
+export const SOLID_COLOR_20 = [
+    'dark/zinc', 'dark/white',
+    'dark', 'zinc', 'white', 'red', 'orange',
+    'amber', 'yellow', 'lime', 'green', 'emerald',
+    'teal', 'cyan', 'sky', 'blue', 'indigo',
+    'violet', 'purple', 'fuchsia', 'pink', 'rose'];

@@ -180,7 +180,7 @@
 
 22. Text
     - `Text` extends the JSX `<p>` element
-    - `TextLink` extends the `<Link>` component
+    - `TextLink` extends the Headless UI `<Link>` component
     - `Strong` extends the JSX `<strong>` element
     - `Code` extends the JSX `<code>` element
 

@@ -1,7 +1,6 @@
 import * as Headless from "@headlessui/react";
 
 export default function Input({
-    disabled = false,
     invalid = false,
     name,
     defaultValue,
@@ -14,7 +13,6 @@ export default function Input({
     className, 
     pattern
 }: {
-    disabled?: boolean;
     invalid?: boolean;
     name: string;
     defaultValue?: string;
@@ -42,7 +40,6 @@ export default function Input({
                 value={value}
                 invalid={invalid}
                 onChange={onChange}
-                disabled={disabled}
                 autoFocus={autoFocus}
                 placeholder={placeholder}
                 autoComplete={autoComplete}

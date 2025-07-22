@@ -8,6 +8,7 @@ import { useState } from "react";
 import { Avatar } from "../avatar";
 import { USERS } from "test-data";
 import ListboxDescription from "./ListboxDescription";
+import { ErrorMessage } from "../fieldset";
 
 export default function ExampleListbox({
   users = USERS
@@ -17,10 +18,14 @@ export default function ExampleListbox({
   let [status, setStatus] = useState(null);
   let [user, setUser] = useState(null);
 
+  const errors = new Map<string, string>([
+    ['status', 'The project status is required.']
+  ]);
+
   return (
     <>
       <DemoComponent heading="Basic">
-        <Field disabled>
+        <Field>
           <Label>Project status</Label>
           <Listbox name="status" defaultValue="active" value={status} onChange={setStatus}>
             <ListboxOption value="active">
@@ -46,7 +51,7 @@ export default function ExampleListbox({
             defaultValue={USERS[1].name}
             displayValue={(user: typeof USERS[0]) => user?.name}
             value={user}
-            onChange={setUser} 
+            onChange={setUser}
             placeholder="Select user&hellip;">
             {users.map((user) => (
               <ListboxOption key={user.id} value={user}>
@@ -57,6 +62,47 @@ export default function ExampleListbox({
               </ListboxOption>
             ))}
           </Listbox>
+        </Field>
+      </DemoComponent>
+
+      <DemoComponent heading="Disabled state">
+        <Field disabled>
+          <Label>Project status</Label>
+          <Listbox name="status" defaultValue="delayed">
+            <ListboxOption value="active">
+              <ListboxLabel>Active</ListboxLabel>
+            </ListboxOption>
+            <ListboxOption value="paused">
+              <ListboxLabel>Paused</ListboxLabel>
+            </ListboxOption>
+            <ListboxOption value="delayed">
+              <ListboxLabel>Delayed</ListboxLabel>
+            </ListboxOption>
+            <ListboxOption value="canceled">
+              <ListboxLabel>Canceled</ListboxLabel>
+            </ListboxOption>
+          </Listbox>
+        </Field>
+      </DemoComponent>
+
+      <DemoComponent heading="Validation errors">
+        <Field>
+          <Label>Project status</Label>
+          <Listbox name="status" placeholder="Select status&hellip;" invalid={errors.has('status')}>
+            <ListboxOption value="active">
+              <ListboxLabel>Active</ListboxLabel>
+            </ListboxOption>
+            <ListboxOption value="paused">
+              <ListboxLabel>Paused</ListboxLabel>
+            </ListboxOption>
+            <ListboxOption value="delayed">
+              <ListboxLabel>Delayed</ListboxLabel>
+            </ListboxOption>
+            <ListboxOption value="canceled">
+              <ListboxLabel>Canceled</ListboxLabel>
+            </ListboxOption>
+          </Listbox>
+          {errors.has('status') && <ErrorMessage>{errors.get('status')}</ErrorMessage>}
         </Field>
       </DemoComponent>
 

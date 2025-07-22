@@ -1,4 +1,5 @@
 import { Link } from "react-router";
+import * as Headless from "@headlessui/react";
 
 export default function TextLink({
     children,
@@ -8,10 +9,11 @@ export default function TextLink({
     href: string;
 }) {
     return (
-        <Link
-            to={href}
-            className="text-sm font-semibold text-blue-600 hover:text-blue-500 dark:text-blue-400 dark:hover:text-blue-300">
+        <Headless.Button
+            as="a"
+            href={href}
+            className="text-zinc-950 underline decoration-zinc-950/50 data-hover:decoration-zinc-950 dark:text-white dark:decoration-white/50 dark:data-hover:decoration-white">
             {children}
-        </Link>
+        </Headless.Button>
     );
 }

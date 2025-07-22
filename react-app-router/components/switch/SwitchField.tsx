@@ -1,17 +1,17 @@
 import { Field } from "@headlessui/react";
 
 export default function SwitchField({
-  disabled = false,
-  children
+  children,
+  disabled
 }: {
-    disabled?: boolean;
     children?: React.ReactNode;
+    disabled?: boolean
 }) {
   return (
     <Field
-        as="div"
-        className={`flex items-center gap-2 ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
-        disabled={disabled}
+        data-slot="field"
+        disabled = {disabled}
+        className="grid grid-cols-[1fr_auto] gap-x-8 gap-y-1 sm:grid-cols-[1fr_auto] *:data-[slot=control]:col-start-2 *:data-[slot=control]:self-start sm:*:data-[slot=control]:mt-0.5 *:data-[slot=label]:col-start-1 *:data-[slot=label]:row-start-1 *:data-[slot=description]:col-start-1 *:data-[slot=description]:row-start-2 has-data-[slot=description]:**:data-[slot=label]:font-medium"
     >
         {children}
     </Field>

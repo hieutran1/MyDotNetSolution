@@ -21,7 +21,7 @@ export default [
         route("components/badge", "../components/badge/ExampleBadge.tsx"), //done
 
         route("components/button", "../components/button/ExampleButton.tsx"), // done partial
-        route("components/checkbox", "../components/checkbox/ExampleCheckbox.tsx"), //done
+        route("components/checkbox", "../components/checkbox/ExampleCheckbox.tsx"), //done, 20 solid colors
 
         route("components/combobox", "../components/combobox/ExampleCombobox.tsx"), // done
 
@@ -41,17 +41,17 @@ export default [
         route("components/navbar", "../components/navbar/ExampleNavbar.tsx"), // done
 
         route("components/pagination", "../components/pagination/ExamplePagination.tsx"), //done
-        route("components/radio", "../components/radio/ExampleRadio.tsx"),
-        route("components/select", "../components/select/ExampleSelect.tsx"),
+        route("components/radio", "../components/radio/ExampleRadio.tsx"), // done, 20 solid colors
+        route("components/select", "../components/select/ExampleSelect.tsx"), //done
 
         route("components/sidebar", "../components/sidebar/ExampleSidebar.tsx"), //done
 
-        route("components/switch", "../components/switch/ExampleSwitch.tsx"),
+        route("components/switch", "../components/switch/ExampleSwitch.tsx"), // done, 20 solid colors
 
         route("components/table", "../components/table/ExampleTable.tsx"), //done
 
-        route("components/text", "../components/text/ExampleText.tsx"),
-        route("components/textarea", "../components/textarea/ExampleTextarea.tsx"),
+        route("components/text", "../components/text/ExampleText.tsx"), //done
+        route("components/textarea", "../components/textarea/ExampleTextarea.tsx"), //done
     ]),
 
 ] satisfies RouteConfig;

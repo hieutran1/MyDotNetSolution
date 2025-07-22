@@ -1,7 +1,6 @@
 import * as Headless from "@headlessui/react";
 
 export default function Listbox({
-    disabled = false,
     invalid = false,
     name,
     defaultValue,
@@ -11,7 +10,6 @@ export default function Listbox({
     placeholder,
     children
 }: {
-    disabled?: boolean;
     invalid?: boolean;
     name: string;
     defaultValue?: string;
@@ -25,7 +23,6 @@ export default function Listbox({
         <>
             <Headless.Listbox
                 name={name}
-                disabled={disabled}
                 value={value}
                 defaultValue={defaultValue}
                 onChange={(value) => {
@@ -33,6 +30,7 @@ export default function Listbox({
                         onChange(value);
                     }
                 }}
+                invalid={invalid}
             >
                 <Headless.ListboxButton
                     className="group relative block w-full before:absolute before:inset-px before:rounded-[calc(var(--radius-lg)-1px)] before:bg-white before:shadow-sm dark:before:hidden focus:outline-hidden after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:ring-transparent after:ring-inset data-focus:after:ring-2 data-focus:after:ring-blue-500 data-disabled:opacity-50 data-disabled:before:bg-zinc-950/5 data-disabled:before:shadow-none"
