@@ -85,20 +85,24 @@ export default function Home() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    {ORDERS.map((order) => (
-                        <TableRow key={order.orderNumber} href={`demo/orders/${order.orderNumber}`}>
-                            <TableCell tabIndex={0}>{order.orderNumber}</TableCell>
-                            <TableCell className="text-zinc-500">{order.purchaseDate}</TableCell>
-                            <TableCell>{order.customer}</TableCell>
-                            <TableCell>
-                                <div className="flex items-center gap-2">
-                                    <Avatar src={`/asset/events/${order.event[1]}`} className="size-6"></Avatar>
-                                    <span>{order.event[0]}</span>
-                                </div>
-                            </TableCell>
-                            <TableCell className="text-right">{order.amount}</TableCell>
-                        </TableRow>
-                    ))}
+                    {ORDERS.map((order, index: number) => {
+                        if (index > 10) { return; }
+                        
+                        return (
+                            <TableRow key={order.orderNumber} href={`demo/orders/${order.orderNumber}`}>
+                                <TableCell tabIndex={0}>{order.orderNumber}</TableCell>
+                                <TableCell className="text-zinc-500">{order.purchaseDate}</TableCell>
+                                <TableCell>{order.customer}</TableCell>
+                                <TableCell>
+                                    <div className="flex items-center gap-2">
+                                        <Avatar src={`/asset/events/${order.event[1]}`} className="size-6"></Avatar>
+                                        <span>{order.event[0]}</span>
+                                    </div>
+                                </TableCell>
+                                <TableCell className="text-right">{order.amount}</TableCell>
+                            </TableRow>
+                        )
+                    })}
                 </TableBody>
             </Table>
         </>

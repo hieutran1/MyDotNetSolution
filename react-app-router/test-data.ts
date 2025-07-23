@@ -114,12 +114,29 @@ export const ORDERS = [
     { orderNumber: '3006', purchaseDate: 'Apr 10, 2024', customer: 'Whitney Francis', event: ['We All Look The Same', 'we-all-look-the-same-thumb.jpg'], amount: 'US$150.00' },
     { orderNumber: '3007', purchaseDate: 'Apr 6, 2024', customer: 'Leonard Krasner', event: ['Bear Hug: Live in Concert', 'bear-hug-thumb.jpg'], amount: 'US$80.00' },
     { orderNumber: '3008', purchaseDate: 'Apr 3, 2024', customer: 'Floyd Miles', event: ['Bear Hug: Live in Concert', 'bear-hug-thumb.jpg'], amount: 'US$80.00' },
-    { orderNumber: '3009', purchaseDate: 'Mar 29, 2024', customer: 'Emily Selman', event: ['Viking People', 'viking-people-thumb.jpg'], amount: 'US$114.99' }
+    { orderNumber: '3009', purchaseDate: 'Mar 29, 2024', customer: 'Emily Selman', event: ['Viking People', 'viking-people-thumb.jpg'], amount: 'US$114.99' },
+    { orderNumber: '3010', purchaseDate: 'Mar 25, 2024', customer: 'Kristin Watson', event: ['Six Fingers — DJ Set', 'six-fingers-thumb.jpg'], amount: 'US$299.00' },
+    { orderNumber: '3011', purchaseDate: 'Mar 21, 2024', customer: 'Emma Dorsey', event: ['Bear Hug: Live in Concert', 'bear-hug-thumb.jpg'], amount: 'US$80.00' },
+    { orderNumber: '3012', purchaseDate: 'Mar 16, 2024', customer: 'Alicia Bell', event: ['We All Look The Same', 'we-all-look-the-same-thumb.jpg'], amount: 'US$150.00' },
+    { orderNumber: '3013', purchaseDate: 'Mar 12, 2024', customer: 'Jenny Wilson', event: ['Six Fingers — DJ Set', 'six-fingers-thumb.jpg'], amount: 'US$299.00' },
+    { orderNumber: '3014', purchaseDate: 'Mar 8, 2024', customer: 'Anna Roberts', event: ['We All Look The Same', 'we-all-look-the-same-thumb.jpg'], amount: 'US$150.00' },
+    { orderNumber: '3015', purchaseDate: 'Mar 4, 2024', customer: 'Benjamin Russel', event: ['We All Look The Same', 'we-all-look-the-same-thumb.jpg'], amount: 'US$150.00' },
+    { orderNumber: '3016', purchaseDate: 'Feb 28, 2024', customer: 'Jeffrey Webb', event: ['Bear Hug: Live in Concert', 'bear-hug-thumb.jpg'], amount: 'US$80.00' },
+    { orderNumber: '3017', purchaseDate: 'Feb 23, 2024', customer: 'Kathryn Murphy', event: ['Bear Hug: Live in Concert', 'bear-hug-thumb.jpg'], amount: 'US$80.00' },
+    { orderNumber: '3018', purchaseDate: 'Feb 19, 2024', customer: 'Lawrence Hunter', event: ['Viking People', 'viking-people-thumb.jpg'], amount: 'US$114.99' },
+    { orderNumber: '3019', purchaseDate: 'Feb 15, 2024', customer: 'Yvette Armstrong', event: ['Viking People', 'viking-people-thumb.jpg'], amount: 'US$114.99' },
+    { orderNumber: '3020', purchaseDate: 'Feb 10, 2024', customer: 'Angela Fisher', event: ['Six Fingers — DJ Set', 'six-fingers-thumb.jpg'], amount: 'US$299.00' },
+    { orderNumber: '3021', purchaseDate: 'Feb 5, 2024', customer: 'Blake Reid', event: ['Bear Hug: Live in Concert', 'bear-hug-thumb.jpg'], amount: 'US$80.00' },
+    { orderNumber: '3022', purchaseDate: 'Feb 1, 2024', customer: 'Hector Gibbons', event: ['Viking People', 'viking-people-thumb.jpg'], amount: 'US$114.99' },
+    { orderNumber: '3023', purchaseDate: 'Jan 27, 2024', customer: 'Fabricio Mendes', event: ['Viking People', 'viking-people-thumb.jpg'], amount: 'US$114.99' },
+    { orderNumber: '3024', purchaseDate: 'Jan 22, 2024', customer: 'Jillian Steward', event: ['Viking People', 'viking-people-thumb.jpg'], amount: 'US$114.99' },
+    { orderNumber: '3025', purchaseDate: 'Jan 18, 2024', customer: 'Chelsea Hagon', event: ['Viking People', 'viking-people-thumb.jpg'], amount: 'US$114.99' },
+
 ]
 
 export const EVENTS = [
-    {eventNumber: 1000, name: 'Bear Hug: Live in Concert', startDate: 'May 20, 2024 at 10 PM', playAt: 'Harmony Theater, Winnipeg, MB', soldTickets: 350, saleTickets: 500, status: 'On Sale', eventImage: 'bear-hug.jpg'},
-    {eventNumber: 1001, name: 'Six Fingers — DJ Set', startDate: 'Jun 2, 2024 at 8 PM', playAt: 'Moonbeam Arena, Uxbridge, ON', soldTickets: 72, saleTickets: 150, status: 'On Sale', eventImage: 'six-fingers.jpg'},
-    {eventNumber: 1002, name: 'We All Look The Same', startDate: 'Aug 5, 2024 at 4 PM', playAt: 'Electric Coliseum, New York, NY', soldTickets: 275, saleTickets: 275, status: 'Closed', eventImage: 'we-all-look-the-same.jpg'},
-    {eventNumber: 1003, name: 'Viking People', startDate: 'Dec 31, 2024 at 8 PM', playAt: 'Tapestry Hall, Cambridge, ON', soldTickets: 6, saleTickets: 40, status: 'On Sale', eventImage: 'viking-people.jpg'}
+    { eventNumber: 1000, name: 'Bear Hug: Live in Concert', startDate: 'May 20, 2024 at 10 PM', playAt: 'Harmony Theater, Winnipeg, MB', soldTickets: 350, saleTickets: 500, status: 'On Sale', eventImage: 'bear-hug.jpg' },
+    { eventNumber: 1001, name: 'Six Fingers — DJ Set', startDate: 'Jun 2, 2024 at 8 PM', playAt: 'Moonbeam Arena, Uxbridge, ON', soldTickets: 72, saleTickets: 150, status: 'On Sale', eventImage: 'six-fingers.jpg' },
+    { eventNumber: 1002, name: 'We All Look The Same', startDate: 'Aug 5, 2024 at 4 PM', playAt: 'Electric Coliseum, New York, NY', soldTickets: 275, saleTickets: 275, status: 'Closed', eventImage: 'we-all-look-the-same.jpg' },
+    { eventNumber: 1003, name: 'Viking People', startDate: 'Dec 31, 2024 at 8 PM', playAt: 'Tapestry Hall, Cambridge, ON', soldTickets: 6, saleTickets: 40, status: 'On Sale', eventImage: 'viking-people.jpg' }
 ]
