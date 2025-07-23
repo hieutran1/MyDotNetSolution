@@ -103,3 +103,18 @@ export const SOLID_COLOR_20 = [
     'amber', 'yellow', 'lime', 'green', 'emerald',
     'teal', 'cyan', 'sky', 'blue', 'indigo',
     'violet', 'purple', 'fuchsia', 'pink', 'rose'];
+
+export const ORDERS = [
+    { orderNumber: '3000', purchaseDate: 'May 9, 2024', customer: 'Leslie Alexander', event: ['Bear Hug: Live in Concert', 'bear-hug-thumb.jpg'], amount: 'US$80.00' },
+    { orderNumber: '3001', purchaseDate: 'May 5, 2024', customer: 'Michael Foster', event: ['Six Fingers — DJ Set', 'six-fingers-thumb.jpg'], amount: 'US$299.00' },
+    { orderNumber: '3002', purchaseDate: 'Apr 28, 2024', customer: 'Dries Vincent', event: ['We All Look The Same', 'we-all-look-the-same-thumb.jpg'], amount: 'US$150.00' },
+    { orderNumber: '3003', purchaseDate: 'Apr 23, 2024', customer: 'Lindsay Walton', event: ['Bear Hug: Live in Concert', 'bear-hug-thumb.jpg'], amount: 'US$80.00' },
+    { orderNumber: '3004', purchaseDate: 'Apr 18, 2024', customer: 'Courtney Henry', event: ['Viking People', 'viking-people-thumb.jpg'], amount: 'US$114.99' },
+    { orderNumber: '3005', purchaseDate: 'Apr 14, 2024', customer: 'Tom Cook', event: ['Six Fingers — DJ Set', 'six-fingers-thumb.jpg'], amount: 'US$299.00' },
+    { orderNumber: '3006', purchaseDate: 'Apr 10, 2024', customer: 'Whitney Francis', event: ['We All Look The Same', 'we-all-look-the-same-thumb.jpg'], amount: 'US$150.00' },
+    { orderNumber: '3007', purchaseDate: 'Apr 6, 2024', customer: 'Leonard Krasner', event: ['Bear Hug: Live in Concert', 'bear-hug-thumb.jpg'], amount: 'US$80.00' },
+    { orderNumber: '3008', purchaseDate: 'Apr 3, 2024', customer: 'Floyd Miles', event: ['Bear Hug: Live in Concert', 'bear-hug-thumb.jpg'], amount: 'US$80.00' },
+    { orderNumber: '3009', purchaseDate: 'Mar 29, 2024', customer: 'Emily Selman', event: ['Viking People', 'viking-people-thumb.jpg'], amount: 'US$114.99' }
+]
+
+export const EVENTS = []

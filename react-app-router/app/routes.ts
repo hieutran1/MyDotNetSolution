@@ -53,5 +53,11 @@ export default [
         route("components/text", "../components/text/ExampleText.tsx"), //done
         route("components/textarea", "../components/textarea/ExampleTextarea.tsx"), //done
     ]),
+    layout("../demo/layouts/DemoSidebarLayout.tsx", [
+        route("demo", "../demo/pages/Home.tsx"), //Home
+        route("demo/events", "../demo/pages/Events.tsx"),
+        route("demo/orders", "../demo/pages/Orders.tsx"),
+        route("demo/settings", "../demo/pages/Settings.tsx"),
+    ])
 
 ] satisfies RouteConfig;

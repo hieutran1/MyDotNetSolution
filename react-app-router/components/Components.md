@@ -2,6 +2,7 @@
 - Flags: https://flagpack.xyz/docs/development/react/
 - Refactor UI: https://www.refactoringui.com/?ref=sidebar
 - Application UI: https://tailwindcss.com/plus/ui-blocks/application-ui
+- Catalyst (TailwindUI components): https://catalyst.tailwindui.com/docs/alert
 
 1. Alert
     + You'll still get emails from people who accidentally deleted their account, but at least you tried.
