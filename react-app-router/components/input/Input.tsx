@@ -34,7 +34,7 @@ export default function Input({
             }>
             <Headless.Input
                 as="input"
-                type={type || "text"}
+                type={type}
                 name={name}
                 defaultValue={defaultValue}
                 value={value}

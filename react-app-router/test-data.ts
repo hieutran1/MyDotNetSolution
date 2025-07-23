@@ -117,4 +117,9 @@ export const ORDERS = [
     { orderNumber: '3009', purchaseDate: 'Mar 29, 2024', customer: 'Emily Selman', event: ['Viking People', 'viking-people-thumb.jpg'], amount: 'US$114.99' }
 ]
 
-export const EVENTS = []
+export const EVENTS = [
+    {eventNumber: 1000, name: 'Bear Hug: Live in Concert', startDate: 'May 20, 2024 at 10 PM', playAt: 'Harmony Theater, Winnipeg, MB', soldTickets: 350, saleTickets: 500, status: 'On Sale', eventImage: 'bear-hug.jpg'},
+    {eventNumber: 1001, name: 'Six Fingers — DJ Set', startDate: 'Jun 2, 2024 at 8 PM', playAt: 'Moonbeam Arena, Uxbridge, ON', soldTickets: 72, saleTickets: 150, status: 'On Sale', eventImage: 'six-fingers.jpg'},
+    {eventNumber: 1002, name: 'We All Look The Same', startDate: 'Aug 5, 2024 at 4 PM', playAt: 'Electric Coliseum, New York, NY', soldTickets: 275, saleTickets: 275, status: 'Closed', eventImage: 'we-all-look-the-same.jpg'},
+    {eventNumber: 1003, name: 'Viking People', startDate: 'Dec 31, 2024 at 8 PM', playAt: 'Tapestry Hall, Cambridge, ON', soldTickets: 6, saleTickets: 40, status: 'On Sale', eventImage: 'viking-people.jpg'}
+]
