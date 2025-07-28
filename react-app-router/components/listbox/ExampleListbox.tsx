@@ -9,6 +9,16 @@ import { Avatar } from "../avatar";
 import { USERS } from "test-data";
 import ListboxDescription from "./ListboxDescription";
 import { ErrorMessage } from "../fieldset";
+import * as Headless from "@headlessui/react";
+import { CheckIcon, ChevronDownIcon } from "@heroicons/react/20/solid";
+
+const people = [
+  { id: 1, name: 'Durward Reynolds' },
+  { id: 2, name: 'Kenton Towne' },
+  { id: 3, name: 'Therese Wunsch' },
+  { id: 4, name: 'Benedict Kessler' },
+  { id: 5, name: 'Katelyn Rohan' },
+]
 
 export default function ExampleListbox({
   users = USERS
@@ -17,6 +27,7 @@ export default function ExampleListbox({
 }) {
   let [status, setStatus] = useState(null);
   let [user, setUser] = useState(null);
+  const [selectedPerson, setSelectedPerson] = useState(people[0]);
 
   const errors = new Map<string, string>([
     ['status', 'The project status is required.']
@@ -124,6 +135,42 @@ export default function ExampleListbox({
             </ListboxOption>
           </Listbox>
         </Field>
+      </DemoComponent>
+
+      <DemoComponent heading="From HeadlessUI">
+        <Headless.Listbox value={selectedPerson} onChange={setSelectedPerson}>
+          <Headless.ListboxButton
+            className={
+              'relative block w-full rounded-lg bg-white/5 py-1.5 pr-8 pl-3 text-left text-sm/6 text-white' +
+              'focus:not-data-focus:outline-none data-focus:outline-2 data-focus:-outline-offset-2 data-focus:outline-white/25'
+            }
+          >
+            {selectedPerson.name}
+            <ChevronDownIcon
+              className="group pointer-events-none absolute top-2.5 right-2.5 size-4 fill-white/60"
+              aria-hidden="true"
+            />
+          </Headless.ListboxButton>
+          <Headless.ListboxOptions
+            anchor="bottom"
+            transition
+            className={
+              'w-(--button-width) rounded-xl border border-white/5 bg-white/5 p-1 [--anchor-gap:--spacing(1)] focus:outline-none' +
+              'transition duration-100 ease-in data-leave:data-closed:opacity-0'
+            }
+          >
+            {people.map((person) => (
+              <Headless.ListboxOption
+                key={person.name}
+                value={person}
+                className="group flex cursor-default items-center gap-2 rounded-lg px-3 py-1.5 select-none data-focus:bg-white/10"
+              >
+                <CheckIcon className="invisible size-4 fill-white group-data-selected:visible" />
+                <div className="text-sm/6 text-white">{person.name}</div>
+              </Headless.ListboxOption>
+            ))}
+          </Headless.ListboxOptions>
+        </Headless.Listbox>
       </DemoComponent>
     </>
 

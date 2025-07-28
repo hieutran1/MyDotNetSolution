@@ -7,7 +7,7 @@ export default function Divider({
     className?: string,
     role?: string
 }) {
-    const innerClassName = soft ? 'border-zinc-950/50 dark:border-white/50' : 'border-zinc-950/10 dark:border-white/10';
+    const innerClassName = soft ? 'border-zinc-950/5 dark:border-white/5' : 'border-zinc-950/10 dark:border-white/10';
 
     return (
         <hr role={role} className={(className ? className + ' ' : '') + innerClassName} />

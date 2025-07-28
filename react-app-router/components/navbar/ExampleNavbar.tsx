@@ -26,7 +26,7 @@ export default function ExampleNavbar() {
   return (
     <div className='-mx-6 flex min-w-[300px] items-start justify-center overflow-hidden border-y border-zinc-200 bg-white sm:mx-0 sm:max-w-full sm:rounded-lg sm:border dark:border-white/10 dark:bg-zinc-900'>
       <Navbar>
-        <Dropdown>
+        <Dropdown className="max-lg:hidden relative">
           <DropdownButton as={NavbarItem}>
             <Avatar src="/asset/tailwind-logo.svg" />
             <NavbarLabel>Tailwind Labs</NavbarLabel>

@@ -59,7 +59,7 @@ export default function ExampleStackedLayout({ children }: { children?: React.Re
     <StackedLayout
       navbar={
         <Navbar>
-          <Dropdown className="max-lg:hidden">
+          <Dropdown className="max-lg:hidden relative">
             <DropdownButton as={NavbarItem} >
               <Avatar src="/asset/tailwind-logo.svg" />
               <NavbarLabel>Tailwind Labs</NavbarLabel>

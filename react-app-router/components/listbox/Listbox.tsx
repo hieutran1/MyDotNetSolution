@@ -1,4 +1,9 @@
 import * as Headless from "@headlessui/react";
+import { forwardRef } from "react";
+
+let MyCustomSelectedOption = forwardRef(function (props, ref) {
+    return <button className="..."  {...props} />
+})
 
 export default function Listbox({
     invalid = false,
@@ -8,7 +13,8 @@ export default function Listbox({
     displayValue,
     onChange,
     placeholder,
-    children
+    children,
+    className
 }: {
     invalid?: boolean;
     name: string;
@@ -18,6 +24,7 @@ export default function Listbox({
     onChange?: (value: any) => void;
     placeholder?: string;
     children: React.ReactNode;
+    className?: string;
 }) {
     return (
         <>
@@ -33,24 +40,20 @@ export default function Listbox({
                 invalid={invalid}
             >
                 <Headless.ListboxButton
-                    className="group relative block w-full before:absolute before:inset-px before:rounded-[calc(var(--radius-lg)-1px)] before:bg-white before:shadow-sm dark:before:hidden focus:outline-hidden after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:ring-transparent after:ring-inset data-focus:after:ring-2 data-focus:after:ring-blue-500 data-disabled:opacity-50 data-disabled:before:bg-zinc-950/5 data-disabled:before:shadow-none"
+                    className={
+                        (className ? className + ' ' : '') +
+                        "group relative block w-full before:absolute before:inset-px before:rounded-[calc(var(--radius-lg)-1px)] before:bg-white before:shadow-sm dark:before:hidden focus:outline-hidden after:pointer-events-none after:absolute after:inset-0 after:rounded-lg after:ring-transparent after:ring-inset data-focus:after:ring-2 data-focus:after:ring-blue-500 data-disabled:opacity-50 data-disabled:before:bg-zinc-950/5 data-disabled:before:shadow-none"}
 
                     data-slot="control"
                     value={displayValue ? displayValue(value) : value}
                 >
                     <span
                         className="relative block w-full appearance-none rounded-lg py-[calc(--spacing(2.5)-1px)] sm:py-[calc(--spacing(1.5)-1px)] min-h-11 sm:min-h-9 pr-[calc(--spacing(7)-1px)] pl-[calc(--spacing(3.5)-1px)] sm:pl-[calc(--spacing(3)-1px)] text-left text-base/6 text-zinc-950 placeholder:text-zinc-500 sm:text-sm/6 dark:text-white forced-colors:text-[CanvasText] border border-zinc-950/10 group-data-active:border-zinc-950/20 group-data-hover:border-zinc-950/20 dark:border-white/10 dark:group-data-active:border-white/20 dark:group-data-hover:border-white/20 bg-transparent dark:bg-white/5 group-data-invalid:border-red-500 group-data-hover:group-data-invalid:border-red-500 dark:group-data-invalid:border-red-600 dark:data-hover:group-data-invalid:border-red-600 group-data-disabled:border-zinc-950/20 group-data-disabled:opacity-100 dark:group-data-disabled:border-white/15 dark:group-data-disabled:bg-white/2.5 dark:group-data-disabled:data-hover:border-white/15">
-
-                        <div className="flex min-w-0 items-center *:data-[slot=icon]:size-5 *:data-[slot=icon]:shrink-0 sm:*:data-[slot=icon]:size-4 *:data-[slot=icon]:text-zinc-500 group-data-focus/option:*:data-[slot=icon]:text-white dark:*:data-[slot=icon]:text-zinc-400 forced-colors:*:data-[slot=icon]:text-[CanvasText] forced-colors:group-data-focus/option:*:data-[slot=icon]:text-[Canvas] *:data-[slot=avatar]:-mx-0.5 *:data-[slot=avatar]:size-6 sm:*:data-[slot=avatar]:size-5">
-
-                            {
-                                (value || defaultValue) ?
-                                    (<span className="ml-2.5 truncate first:ml-0 sm:ml-2 sm:first:ml-0">
-                                        {value ?? defaultValue}
-                                    </span>) :
-                                    (<span className="block truncate text-zinc-500">{placeholder}</span>)
-                            }
-                        </div>
+                        {
+                            <Headless.ListboxSelectedOption
+                                as={MyCustomSelectedOption}
+                                options={children} placeholder={<span className="block truncate text-zinc-500">{placeholder}</span>} />
+                        }
                     </span>
 
                     <span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
