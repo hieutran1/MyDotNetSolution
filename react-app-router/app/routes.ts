@@ -57,6 +57,7 @@ export default [
         route("demo", "../demo/pages/Home.tsx"), //Home
         route("demo/events", "../demo/pages/Events.tsx"),
         route("demo/orders", "../demo/pages/Orders.tsx"),
+        route("demo/orders/:orderId", "../demo/pages/OrderDetail.tsx"),
         route("demo/settings", "../demo/pages/Settings.tsx"),
     ])
 
