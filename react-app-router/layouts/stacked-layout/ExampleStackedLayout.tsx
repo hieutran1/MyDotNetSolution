@@ -23,7 +23,7 @@ import { InboxIcon, MagnifyingGlassIcon } from '@heroicons/react/20/solid'
 
 const navItems = [
   { label: 'Home', url: '/layouts/stacked', current: true },
-  { label: 'Events', url: '/layouts/stacked/events' },
+  { label: 'Events', url: '/layouts/stacked/events', current: true },
   { label: 'Orders', url: '/layouts/stacked/orders' },
   { label: 'Broadcasts', url: '/layouts/stacked/broadcasts' },
   { label: 'Settings', url: '/layouts/stacked/settings' },

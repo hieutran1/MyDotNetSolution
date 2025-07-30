@@ -8,13 +8,13 @@ export default [
     // index("../layouts/sidebar-layout/ExampleSidebarLayout.tsx"),
     // route("layouts/sidebar", "../layouts/sidebar-layout/ExampleSidebarLayout.tsx"),
     // route("layouts/sidebar/*", "../layouts/sidebar-layout/ExampleSidebarLayout.tsx"),
-    route("layouts/stacked", "../layouts/stacked-layout/ExampleStackedLayout.tsx"),
+    route("layouts/stacked", "../layouts/stacked-layout/ExampleStackedLayout.tsx"), // Fix current state
 
     route("auth/login", "../layouts/auth-layout/pages/LoginPage.tsx"),
     route("auth/register", "../layouts/auth-layout/pages/RegistrationPage.tsx"),
     route("auth/forgot-password", "../layouts/auth-layout/pages/ForgotPasswordPage.tsx"),
 
-    layout("../layouts/sidebar-layout/ExampleSidebarLayout.tsx", [
+    layout("../layouts/sidebar-layout/ExampleSidebarLayout.tsx", [ // Fix Current state of layout
         route("components/alert", "../components/alert/ExampleAlert.tsx"), //done
         route("components/avatar", "../components/avatar/ExampleAvatar.tsx"), //done
 
@@ -56,6 +56,7 @@ export default [
     layout("../demo/layouts/DemoSidebarLayout.tsx", [
         route("demo", "../demo/pages/Home.tsx"), //Home
         route("demo/events", "../demo/pages/Events.tsx"),
+        route("demo/events/:eventId", "../demo/pages/EventDetail.tsx"),
         route("demo/orders", "../demo/pages/Orders.tsx"),
         route("demo/orders/:orderId", "../demo/pages/OrderDetail.tsx"),
         route("demo/settings", "../demo/pages/Settings.tsx"),
