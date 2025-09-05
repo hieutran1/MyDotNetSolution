@@ -143,7 +143,7 @@ export default function DemoSidebarLayout({ children }: { children?: React.React
                                 <HomeIcon />
                                 <SidebarLabel>Home</SidebarLabel>
                             </SidebarItem>
-                            <SidebarItem href="/demo/events" current>
+                            <SidebarItem href="/demo/events">
                                 <Square2StackIcon />
                                 <SidebarLabel>Events</SidebarLabel>
                             </SidebarItem>

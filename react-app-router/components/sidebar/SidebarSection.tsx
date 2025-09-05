@@ -1,3 +1,5 @@
+import { CurrentProvider } from "internal/current.context";
+
 export default function SidebarSection({
   children,
   className
@@ -10,7 +12,9 @@ export default function SidebarSection({
       data-slot="section"
       className={(className ? className + ' ' : '') + "flex flex-col gap-0.5"}
     >
-      {children}
+      <CurrentProvider>
+        {children}
+      </CurrentProvider>
     </div>
   );
 }
