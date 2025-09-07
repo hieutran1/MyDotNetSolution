@@ -19,3 +19,7 @@ Create React Application with `TypeScript`, `Vite`, `React Router`, `Axios`, `Vi
     ```
 
 - Step 2: Add React Router
+    + Use Data mode
+    ```
+    npm i react-router
+    ```
