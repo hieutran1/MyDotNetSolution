@@ -2,9 +2,10 @@ import { createBrowserRouter } from "react-router";
 import { routes } from "./routes";
 
 const finalRoutes = routes.map((route) => {
+    const Component = route.element;
     return {
         ...route,
-        element: <div>Hello World</div>
+        element: <Component />
     }
 });
 
