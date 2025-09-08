@@ -18,8 +18,12 @@ Create React Application with `TypeScript`, `Vite`, `React Router`, `Axios`, `Vi
     npm create vite@latest my-app --template react-ts
     ```
 
-- Step 2: Add React Router
-    + Use Data mode
+- Step 2: Add React Router - Use Data mode
     ```
     npm i react-router
+    ```
+
+- Step 3: Add TailwindCSS using Vite
+    ```
+    npm install tailwindcss @tailwindcss/vite
     ```
