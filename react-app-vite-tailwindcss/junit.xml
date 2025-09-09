@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites name="vitest tests" tests="1" failures="0" errors="0" time="0.0101873">
+    <testsuite name="src/vitest/sum.test.ts" timestamp="2025-09-09T03:01:41.132Z" hostname="HCM3-000022" tests="1" failures="0" errors="0" skipped="0" time="0.0101873">
+        <testcase classname="src/vitest/sum.test.ts" name="adds 1 + 2 to equal 3" time="0.004729">
+        </testcase>
+    </testsuite>
+</testsuites>

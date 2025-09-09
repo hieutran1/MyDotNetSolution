@@ -27,3 +27,9 @@ Create React Application with `TypeScript`, `Vite`, `React Router`, `Axios`, `Vi
     ```
     npm install tailwindcss @tailwindcss/vite
     ```
+
+- Step 4: Add Vitest
+    ```
+    npm install -D vitest
+    npm install -D @vitest/coverage-v8
+    ```
