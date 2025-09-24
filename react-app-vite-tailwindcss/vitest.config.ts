@@ -19,8 +19,8 @@ export default defineConfig({
       exclude: [
         './dist/',
         '**.config.**',
-        './src/components/Icon',
-        './src/enumerations',
+        './src/components/icon',
+        './src/enums',
         './src/models',
         './src/router'
       ]

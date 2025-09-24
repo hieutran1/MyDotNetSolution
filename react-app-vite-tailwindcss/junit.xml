@@ -1,7 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuites name="vitest tests" tests="1" failures="0" errors="0" time="0.0101873">
-    <testsuite name="src/vitest/sum.test.ts" timestamp="2025-09-09T03:01:41.132Z" hostname="HCM3-000022" tests="1" failures="0" errors="0" skipped="0" time="0.0101873">
-        <testcase classname="src/vitest/sum.test.ts" name="adds 1 + 2 to equal 3" time="0.004729">
+<testsuites name="vitest tests" tests="11" failures="0" errors="0" time="0.0595249">
+    <testsuite name="src/hooks/api/api-client.test.ts" timestamp="2025-09-09T06:07:13.332Z" hostname="HCM3-000022" tests="11" failures="0" errors="0" skipped="0" time="0.0595249">
+        <testcase classname="src/hooks/api/api-client.test.ts" name="useApiClient &gt; should initialize with Idle status" time="0.0209989">
+        </testcase>
+        <testcase classname="src/hooks/api/api-client.test.ts" name="useApiClient &gt; getAll should call GET request and set success state" time="0.0089403">
+        </testcase>
+        <testcase classname="src/hooks/api/api-client.test.ts" name="useApiClient &gt; get should call GET request with ID and set success state" time="0.0044526">
+        </testcase>
+        <testcase classname="src/hooks/api/api-client.test.ts" name="useApiClient &gt; add should call POST request and set success state" time="0.0032849">
+        </testcase>
+        <testcase classname="src/hooks/api/api-client.test.ts" name="useApiClient &gt; update should call PUT request and set success state" time="0.0031709">
+        </testcase>
+        <testcase classname="src/hooks/api/api-client.test.ts" name="useApiClient &gt; remove should call DELETE request and set success state" time="0.0043505">
+        </testcase>
+        <testcase classname="src/hooks/api/api-client.test.ts" name="useApiClient &gt; should set error state if url is missing" time="0.0023791">
+        </testcase>
+        <testcase classname="src/hooks/api/api-client.test.ts" name="useApiClient &gt; should handle AxiosError with response for 404 Not Found" time="0.0018763">
+        </testcase>
+        <testcase classname="src/hooks/api/api-client.test.ts" name="useApiClient &gt; should handle AxiosError with response for 400 Bad Request" time="0.0027809">
+        </testcase>
+        <testcase classname="src/hooks/api/api-client.test.ts" name="useApiClient &gt; should handle AxiosError with request but no response" time="0.0021631">
+        </testcase>
+        <testcase classname="src/hooks/api/api-client.test.ts" name="useApiClient &gt; should handle a generic unexpected error" time="0.0028846">
         </testcase>
     </testsuite>
 </testsuites>
