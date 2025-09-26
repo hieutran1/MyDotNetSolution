@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using MyDotNetSolution.Core.Entities;
@@ -8,6 +7,7 @@ namespace Infrastructure.Data
     public class AppDbContext : DbContext
     {
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Language> Languages { get; set; }
 
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
@@ -17,15 +17,8 @@ namespace Infrastructure.Data
             SaveChanges();
         }
 
-        private List<Customer> GetSeedingCustomers()
-        {
-            return [
-                new Customer {
-                    Id = Guid.NewGuid(),
-                    Name = "Name " + new Random().Next(10),
-                    Email = "Email_" + new Random().Next(10) + ".gmail.com"
-                }
+        private static List<Customer> GetSeedingCustomers() => [
+                new Customer("Customer", "cus@email.com", null)
             ];
-        }
     }
 }
