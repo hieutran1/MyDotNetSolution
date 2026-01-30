@@ -1,10 +1,10 @@
+using Application.Shared.DTOs;
 using Application.Shared.Interfaces;
 using Microsoft.AspNetCore.Mvc;
-using MyDotNetSolution.Core.Entities;
 using System;
 using System.Threading.Tasks;
 
-namespace API.Controllers
+namespace MyDotNetSolution.API.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
@@ -33,14 +33,14 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Create(Customer customer)
+        public async Task<IActionResult> Create(CustomerDto customer)
         {
             var created = await _customerService.CreateAsync(customer);
             return CreatedAtAction(nameof(Get), new { id = created.Id }, created);
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(Guid id, Customer customer)
+        public async Task<IActionResult> Update(Guid id, CustomerDto customer)
         {
             if (id != customer.Id) return BadRequest();
             await _customerService.UpdateAsync(customer);
